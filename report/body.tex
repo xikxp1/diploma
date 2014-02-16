@@ -5,7 +5,7 @@
 Запишем \textbf{общее уравнение непрерывности} в дифференциальной форме:
 
 \begin{equation}\label{eq:main}
-\ro_t + div \bar{J} = f
+\rho_t + div \bar{J} = f
 \end{equation}
 
 Оно представляет собой сильную (локальную) форму закона сохранения.
@@ -13,34 +13,35 @@
 Рассмотрим случай, когда плотность потока будет выражена через плотность заряда следующим образом:
 
 \begin{equation}
-\bar{J} = -a^2 \nabla \ro + \bar{V} \ro
+\bar{J} = -a^2 \nabla \rho + \bar{V} \rho
 \end{equation}
 
 Рассмотрим возмущенную систему, где $\tau$ \--- малый параметр:
 
 \begin{equation*}
-\bar{J}(x,t+\tau) = -a^2 \nabla \ro(x,t) + \bar{V}(x,t) \ro(x,t)
+\bar{J}(x,t+\tau) = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
 \end{equation*}
 
 Разложим левую часть данного уравнения в ряд Тэйлора до члена порядка $m$:
 
 \begin{equation*}
-\bar{J}(x,t) + \bar{J_t}(x,t) \tau + \dots \dfrac{\partial^m \bar{J}}{\partial t^m}(x,t) \dfrac{\tau^m}{m!} = -a^2 \nabla \ro(x,t) + \bar{V}(x,t) \ro(x,t)
+\bar{J}(x,t) + \bar{J_t}(x,t) \tau + \dots \dfrac{\partial^m \bar{J}}{\partial t^m}(x,t) \dfrac{\tau^m}{m!} = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
 \end{equation*}
 
 \begin{equation}\label{eq:sub}
-\sum\limits_{k=0}^{m} \dfrac{\partial^k \bar{J}}{\partial t^k}(x,t) \dfrac{\tau^k}{k!} = -a^2 \nabla \ro(x,t) + \bar{V}(x,t) \ro(x,t)
+\sum\limits_{k=0}^{m} \dfrac{\partial^k \bar{J}}{\partial t^k}(x,t) \dfrac{\tau^k}{k!} = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
 \end{equation}
 
 Продифференцировав исходное уравнение \ref{eq:main} $k$ раз, получим
 
 \begin{equation*}
-\dfrac{\partial^{k+1} \ro}{\partial t^{k+1}} + div \dfrac{\partial^k \bar{J}}{\partial t^k} = \dfrac{\partial^k f}{\partial t^k}
+\dfrac{\partial^{k+1} \rho}{\partial t^{k+1}} + div \dfrac{\partial^k \bar{J}}{\partial t^k} = \dfrac{\partial^k f}{\partial t^k}
 \end{equation*}
 
 Домножим последнее уравнение на $\frac{\tau^k}{k!}$, перепишем его в следующем виде:
 
 \begin{equation*}
-\dfrac{\partial^{k+1} \ro}{\partial t^{k+1}} \dfrac{\tau^k}{k!} = div \dfrac{\partial^k \bar{J}}{\partial t^k} = \dfrac{\partial^k f}{\partial t^k}
-TODO: equation (7)
+\dfrac{\partial^{k+1} \rho}{\partial t^{k+1}} \dfrac{\tau^k}{k!} = div \dfrac{\partial^k \bar{J}}{\partial t^k} = \dfrac{\partial^k f}{\partial t^k}
 \end{equation*}
+
+%TODO: equation (7)
