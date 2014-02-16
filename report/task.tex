@@ -1,0 +1,102 @@
+\begin{center}
+\textsc{\Huge{Особенности решений уравнений теплопроводности с отклоняющимся аргументом\\}}
+\end{center}
+
+\section{Постановка задачи, используемые допущения и вывод исследуемоего на устойчивость дифференциального \\уравнения}
+
+Запишем \textbf{общее уравнение непрерывности} в дифференциальной форме:
+
+\begin{equation}\label{eq:main}
+\rho_t + div \bar{J} = f
+\end{equation}
+
+Оно представляет собой сильную (локальную) форму закона сохранения.
+
+Рассмотрим случай, когда плотность потока будет выражена через плотность заряда следующим образом:
+
+\begin{equation}
+\bar{J} = -a^2 \nabla \rho + \bar{V} \rho
+\end{equation}
+
+Рассмотрим возмущенную систему, где $\tau$ \--- малый параметр:
+
+\begin{equation*}
+\bar{J}(x,t+\tau) = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
+\end{equation*}
+
+Разложим левую часть данного уравнения в ряд Тэйлора до члена порядка $m$:
+
+\begin{equation*}
+\bar{J}(x,t) + \bar{J_t}(x,t) \tau + \dots \dfrac{\partial^m \bar{J}}{\partial t^m}(x,t) \dfrac{\tau^m}{m!} = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
+\end{equation*}
+
+\begin{equation}\label{eq:sub}
+\sum\limits_{k=0}^{m} \dfrac{\partial^k \bar{J}}{\partial t^k}(x,t) \dfrac{\tau^k}{k!} = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
+\end{equation}
+
+Продифференцировав исходное уравнение \ref{eq:main} $k$ раз, получим
+
+\begin{equation*}
+\dfrac{\partial^{k+1} \rho}{\partial t^{k+1}} + div \dfrac{\partial^k \bar{J}}{\partial t^k} = \dfrac{\partial^k f}{\partial t^k}
+\end{equation*}
+
+Домножив последнее уравнение на $\frac{\tau^k}{k!}$, перепишем его в следующем виде:
+
+\begin{equation}\label{eq:div}
+div \left( \dfrac{\partial^k \bar{J}}{\partial t^k} \right) \dfrac{\tau^k}{k!} = \left(\dfrac{\partial^k f}{\partial t^k} - \dfrac{\partial^{k+1} \rho}{\partial t^{k+1}} \right) \dfrac{\tau^k}{k!}
+\end{equation}
+
+Из уравнения \ref{eq:sub}:
+
+\begin{equation*}
+\sum\limits_{k=0}^{m} div \left(\dfrac{\partial^k \bar{J}}{\partial t^k} \right) \dfrac{\tau^k}{k!} = -a^2 div(\nabla \rho) + div(\bar{V} \rho)
+\end{equation*}
+
+Подставим \ref{eq:div}:
+
+\begin{equation*}
+\sum\limits_{k=0}^{m} \left(\dfrac{\partial^k f}{\partial t^k} - \dfrac{\partial^{k+1} \rho}{\partial t^{k+1}} \right) \dfrac{\tau^k}{k!} = - a^2 \Delta \rho + \rho div\bar{V} + (\bar{V},\nabla \rho)
+\end{equation*}
+
+\begin{equation*}
+\sum\limits_{k=0}^{m} \dfrac{\partial^{k+1} \rho}{\partial t^{k+1}} \dfrac{\tau^k}{k!} - a^2 \Delta \rho + \rho div\bar{V} + (\bar{V},\nabla \rho) = \sum\limits_{k=0}^{m} \dfrac{\partial^k f}{\partial t^k} \dfrac{\tau^k}{k!}
+\end{equation*}
+
+Рассмотрим одномерный случай:
+
+\begin{equation*}
+\sum\limits_{k=0}^{m} \dfrac{\partial^{k+1} \rho}{\partial t^{k+1}} \dfrac{\tau^k}{k!} - a^2 \dfrac{\partial^2 \rho}{\partial x^2} + \rho \dfrac{\partial V}{\partial x} + V \dfrac{\partial \rho}{\partial x} = \sum\limits_{k=0}^{m} \dfrac{\partial^k f}{\partial t^k} \dfrac{\tau^k}{k!} = g(x,t)
+\end{equation*}
+
+Для простоты примем $g=0$ и $V=const$:
+
+\begin{equation}
+\sum\limits_{k=0}^{m} \dfrac{\partial^{k+1} \rho}{\partial t^{k+1}} \dfrac{\tau^k}{k!} - a^2 \dfrac{\partial^2 \rho}{\partial x^2} + V \dfrac{\partial \rho}{\partial x} = 0
+\end{equation}
+
+Заменим неизвестную функцию следующим образом:
+
+\begin{equation*}
+\rho (x,t) = e^{\xi x} u(x,t)
+\end{equation*}
+
+Тогда
+
+\begin{align*}
+\rho_x & = e^{\xi x} (u_x + \xi u)\\
+\rho_{xx} & = e^{\xi x} (u_{xx} + 2 \xi u_x + \xi^2 u)
+\end{align*}
+
+\begin{align*}
+- a^2 \rho_{xx} + V \rho_x = e^{\xi x} \lbrack -a^2 (u_{xx} + 2 \xi u_x + \xi^2 u) + V (u_x + \xi u) \rbrack = \\
+= e^{\xi x} \lbrack -a^2 u_{xx} + (-2 a^2 \xi + V) u_x + (-a^2 \xi^2 + V \xi) \rbrack = \\
+= e^{\xi x} \lbrack -a^2 u_{xx} + \dfrac{V^2}{4a^2} u \rbrack
+\end{align*}
+
+при $\xi = \frac{V}{2a^2}$ (т.е. коэффициент при $u_x$ равен $0$).
+
+Наконец, получим уравнение, для которого будем исследовать устойчивость его решений:
+
+\begin{equation}\label{eq:final}
+\sum\limits_{k=0}^{m} \dfrac{\partial^{k+1} u}{\partial t^{k+1}} \dfrac{\tau^k}{k!} - a^2 \dfrac{\partial^2 u}{\partial x^2} + \dfrac{V^2}{4a^2} u = 0
+\end{equation}
