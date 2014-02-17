@@ -1,3 +1,24 @@
 \section{Исследование устойчивости}
 
 Для уравнения \ref{eq:final} применим \textbf{метод Фурье разделения переменных}:
+
+\begin{equation*}
+u(x,t) = T(t) X(x)
+\end{equation*}
+
+\begin{equation*}
+\sum\limits_{k=0}^{m} \dfrac{\tau^k}{k!} T^{(k+1)} X + \dfrac{V^2}{4a^2} T X =a^2 T X''
+\end{equation*}
+
+\begin{equation*}
+\dfrac{\sum\limits_{k=0}^{m} \dfrac{\tau^k}{k!} T^{(k+1)} + \dfrac{V^2}{4a^2} T}{a^2 T} = \dfrac{X''}{X} = -\lambda = -k^2
+\end{equation*}
+
+\begin{equation}
+\left\{
+\begin{aligned}
+\sum\limits_{k=0}^{m} \dfrac{\tau^k}{k!} T^{(k+1)} + \underbrace{ \left( \dfrac{V^2}{4a^2} + a^2 k^2 \right)}_{\gamma} T & = 0\\
+X'' + k^2 X & = 0
+\end{aligned}
+\right.
+\end{equation}
