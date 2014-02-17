@@ -1,0 +1,4625 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    156435,       4616]
+NotebookOptionsPosition[    149361,       4434]
+NotebookOutlinePosition[    149697,       4449]
+CellTagsIndexPosition[    149654,       4446]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mMax", ":=", "15"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"HurwitzMatrix", "[", 
+   RowBox[{"\[Tau]_", ",", "degree_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "coefList", ",", "k", ",", "i", ",", "j", ",", "l", ",", "matrix", ",", 
+      "pivotalIndex", ",", "index"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"coefList", "=", 
+      RowBox[{"{", "\[Gamma]", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"k", "=", "0"}], ",", 
+       RowBox[{"k", "<", 
+        RowBox[{"degree", "+", "1"}]}], ",", 
+       RowBox[{"k", "++"}], ",", 
+       RowBox[{"PrependTo", "[", 
+        RowBox[{"coefList", ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"\[Tau]", "^", "k"}], ")"}], "/", 
+          RowBox[{"Factorial", "[", "k", "]"}]}]}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "coefList", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"matrix", "=", 
+      RowBox[{"ConstantArray", "[", 
+       RowBox[{"0", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"degree", "+", "1"}], ",", 
+          RowBox[{"degree", "+", "1"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", 
+        RowBox[{"degree", "+", "1"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"pivotalIndex", "=", 
+         RowBox[{"2", "*", "i"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"j", "=", "1"}], ",", 
+          RowBox[{"j", "\[LessEqual]", 
+           RowBox[{"degree", "+", "1"}]}], ",", 
+          RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"index", "=", 
+            RowBox[{"pivotalIndex", "+", "1", "-", "j"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"index", ">", 
+                RowBox[{"degree", "+", "2"}]}], ")"}], "||", " ", 
+              RowBox[{"(", 
+               RowBox[{"index", " ", "<", " ", "1"}], ")"}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Continue", "[", "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"matrix", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "j"}], "]"}], "]"}], "=", 
+              RowBox[{"coefList", "[", 
+               RowBox[{"[", "index", "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+            "]"}]}]}], "\[IndentingNewLine]", "]"}]}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"matrix", "//", "MatrixForm"}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"l", "=", "1"}], ",", 
+       RowBox[{"l", "\[LessEqual]", 
+        RowBox[{"m", "+", "1"}]}], ",", 
+       RowBox[{"l", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Print", "[", 
+         RowBox[{"Det", "[", 
+          RowBox[{"matrix", "[", 
+           RowBox[{"[", 
+            RowBox[{
+             RowBox[{"1", ";;", "l"}], ",", 
+             RowBox[{"1", ";;", "l"}]}], "]"}], "]"}], "]"}], "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"m", "=", "1"}], ",", 
+   RowBox[{"m", "\[LessEqual]", " ", "mMax"}], ",", 
+   RowBox[{"m", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"HurwitzMatrix", "[", 
+    RowBox[{"\[Tau]", ",", "m"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.593159358787938*^9, 3.5931593745512657`*^9}, {
+   3.593159454993587*^9, 3.5931594655416937`*^9}, {3.593159581006311*^9, 
+   3.5931596171921787`*^9}, {3.593159664419883*^9, 3.59315969939914*^9}, {
+   3.5931597448528423`*^9, 3.593159760110981*^9}, {3.593159805527544*^9, 
+   3.593159807640617*^9}, {3.5931598673269777`*^9, 3.593159894226748*^9}, {
+   3.593159926093082*^9, 3.593159926705854*^9}, {3.593159985416985*^9, 
+   3.593159989700472*^9}, {3.593160113835555*^9, 3.593160136646213*^9}, {
+   3.593160168046393*^9, 3.5931602066882277`*^9}, {3.593160259413393*^9, 
+   3.593160312898665*^9}, {3.593160464638753*^9, 3.593160657919322*^9}, {
+   3.593160688339216*^9, 3.593160692493081*^9}, {3.593160743431951*^9, 
+   3.593160746800783*^9}, {3.593160814544387*^9, 3.593160854552375*^9}, {
+   3.593160946090929*^9, 3.593160949629187*^9}, {3.5931609818520823`*^9, 
+   3.593161014943578*^9}, {3.593161050375523*^9, 3.593161070448*^9}, {
+   3.593161102238742*^9, 3.593161135440165*^9}, {3.593161258142449*^9, 
+   3.593161284006886*^9}, {3.5931613308259573`*^9, 3.593161399736107*^9}, {
+   3.593161441549069*^9, 3.593161474874016*^9}, {3.593161527284004*^9, 
+   3.593161536677747*^9}, 3.5931615825870333`*^9, {3.5931616157963743`*^9, 
+   3.593161649653223*^9}, {3.593161776467847*^9, 3.593161818219091*^9}, {
+   3.593161887993085*^9, 3.593162017062503*^9}, {3.593162056416588*^9, 
+   3.593162056740952*^9}, {3.593162097290663*^9, 3.5931621337329273`*^9}, {
+   3.593162197329505*^9, 3.593162212498502*^9}, {3.5931623110106087`*^9, 
+   3.593162363196558*^9}, {3.593162478698723*^9, 3.593162490432308*^9}, {
+   3.59316254306288*^9, 3.593162549919142*^9}, {3.593162601638851*^9, 
+   3.5931626526746798`*^9}, {3.593162702220055*^9, 3.5931628192105503`*^9}, {
+   3.5931628655949173`*^9, 3.5931629114273987`*^9}, {3.593162942089621*^9, 
+   3.593162945664687*^9}, {3.593163121646029*^9, 3.593163129328793*^9}, {
+   3.593163324540822*^9, 3.593163357089981*^9}, {3.593163409836318*^9, 
+   3.593163430826272*^9}, {3.593163557150526*^9, 3.593163565042603*^9}, {
+   3.5931637613431797`*^9, 3.593163767116355*^9}, {3.593163813496365*^9, 
+   3.593163819137438*^9}, {3.593163857316079*^9, 3.593163875724876*^9}, {
+   3.593163936509098*^9, 3.593163975213338*^9}, 3.593164113050563*^9, {
+   3.593164164600889*^9, 3.5931641710490932`*^9}, 3.5931642370294857`*^9, {
+   3.593164268876585*^9, 3.593164288201522*^9}, {3.593164412859787*^9, 
+   3.5931644485386467`*^9}, {3.593164661791584*^9, 3.593164674766617*^9}, {
+   3.593165228547793*^9, 3.593165370878668*^9}, {3.59316546901782*^9, 
+   3.5931654734645443`*^9}, {3.5931656201571817`*^9, 3.593165644479143*^9}, {
+   3.593165825165354*^9, 3.593165853017848*^9}, {3.593165907388026*^9, 
+   3.593165915161705*^9}, {3.593166053953711*^9, 3.593166139409293*^9}, {
+   3.593166186133087*^9, 3.5931662136377897`*^9}, {3.593166258545856*^9, 
+   3.593166270984661*^9}, 3.593166309833147*^9, {3.59316635416499*^9, 
+   3.5931663568444643`*^9}, {3.593166475753764*^9, 3.593166493180582*^9}, {
+   3.593166562946417*^9, 3.593166633148251*^9}, {3.5931667174235783`*^9, 
+   3.5931667344736032`*^9}, {3.59316929659083*^9, 3.59316953032098*^9}, {
+   3.593169592705678*^9, 3.593169599109069*^9}, {3.593169707770426*^9, 
+   3.5931698834305143`*^9}, {3.593169930632304*^9, 3.593169932609769*^9}, {
+   3.59317054631775*^9, 3.593170548726595*^9}, {3.593170598727858*^9, 
+   3.593170606473579*^9}, {3.59317065610163*^9, 3.593170659518033*^9}, {
+   3.593170738354697*^9, 3.5931707384624653`*^9}, {3.593170789835977*^9, 
+   3.593170791603568*^9}, {3.593170891360145*^9, 3.593170913684224*^9}, {
+   3.593170978352458*^9, 3.593171019083002*^9}, {3.59317106251305*^9, 
+   3.593171114228901*^9}, {3.593171161000906*^9, 3.5931711613810472`*^9}, {
+   3.593171205416597*^9, 3.5931712361574574`*^9}, {3.593171285014572*^9, 
+   3.5931712887234173`*^9}, {3.593171431119327*^9, 3.59317145399321*^9}, {
+   3.593171486289805*^9, 3.59317149286117*^9}, {3.593171592248312*^9, 
+   3.593171604102433*^9}, {3.5931720607458076`*^9, 3.5931720978715563`*^9}, {
+   3.593172254819726*^9, 3.593172281028017*^9}, {3.5931723210790462`*^9, 
+   3.593172321385633*^9}, {3.593176085498481*^9, 3.593176100583685*^9}, {
+   3.593176836083542*^9, 3.5931768590125723`*^9}, {3.5932287742282343`*^9, 
+   3.593228794263151*^9}, {3.593228848559606*^9, 3.593228853253614*^9}, {
+   3.593229006929434*^9, 3.5932290220458107`*^9}, {3.593236268275032*^9, 
+   3.593236281208495*^9}, {3.593247364867607*^9, 3.593247364933115*^9}, {
+   3.593339131224815*^9, 3.5933391380580473`*^9}, {3.5933392081951523`*^9, 
+   3.593339208539538*^9}, {3.59333931665711*^9, 3.593339352847486*^9}, {
+   3.5938333909698477`*^9, 3.593833392452344*^9}, {3.593833476498263*^9, 
+   3.5938334974143543`*^9}, {3.5938335365553427`*^9, 
+   3.5938335380016813`*^9}, {3.59383367728039*^9, 3.5938337595412683`*^9}, {
+   3.593833805125695*^9, 3.5938339466688843`*^9}, {3.593848796976739*^9, 
+   3.59384880066715*^9}, {3.5938491034836283`*^9, 3.593849105332108*^9}, {
+   3.601545721647978*^9, 3.601545721973996*^9}, {3.6015457583710785`*^9, 
+   3.6015458226637554`*^9}, {3.6015458799770336`*^9, 
+   3.6015459509580936`*^9}, {3.6015487291309958`*^9, 
+   3.6015487353033495`*^9}, {3.601548783016078*^9, 3.601548783503106*^9}, {
+   3.601624175130282*^9, 3.601624221328896*^9}, {3.601624872412438*^9, 
+   3.601624898851615*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\[Tau]", ",", "1", ",", "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248997643423`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", "\[Tau]"},
+     {"0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899781097*^9}}],
+
+Cell[BoxData["1"], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899782281*^9}}],
+
+Cell[BoxData["\[Gamma]"], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248997829733`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899783703*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], "0"},
+     {"\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899784649*^9}}],
+
+Cell[BoxData["\[Tau]"], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248997866573`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[Tau]", "-", 
+  FractionBox[
+   RowBox[{"\[Gamma]", " ", 
+    SuperscriptBox["\[Tau]", "2"]}], "2"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899787456*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", "\[Gamma]", " ", "\[Tau]", " ", 
+  RowBox[{"(", 
+   RowBox[{"2", "-", 
+    RowBox[{"\[Gamma]", " ", "\[Tau]"}]}], ")"}]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899788218*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248997890167`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], "0", "0"},
+     {"1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899790029*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "2"], "2"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899790925*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "3"], "3"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248997916327`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "6"], " ", 
+  SuperscriptBox["\[Tau]", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"2", " ", "\[Tau]"}], "-", 
+    FractionBox[
+     RowBox[{"3", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "2"]}], "2"]}], ")"}]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248997923803`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "6"], " ", "\[Gamma]", " ", 
+  SuperscriptBox["\[Tau]", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"2", " ", "\[Tau]"}], "-", 
+    FractionBox[
+     RowBox[{"3", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "2"]}], "2"]}], ")"}]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899793206*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899794057*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], "0", "0", "0"},
+     {"\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], "0"},
+     {"\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248997950773`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "3"], "6"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899796039*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "5"], "24"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248997967663`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "144"], " ", 
+  SuperscriptBox["\[Tau]", "4"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"2", " ", 
+     SuperscriptBox["\[Tau]", "2"]}], "+", 
+    RowBox[{"\[Gamma]", " ", 
+     SuperscriptBox["\[Tau]", "3"]}]}], ")"}]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899797557*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "576"], " ", 
+  SuperscriptBox["\[Tau]", "4"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"8", " ", 
+     SuperscriptBox["\[Tau]", "2"]}], "-", 
+    RowBox[{"4", " ", "\[Gamma]", " ", 
+     SuperscriptBox["\[Tau]", "3"]}], "-", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", "2"], " ", 
+     SuperscriptBox["\[Tau]", "4"]}]}], ")"}]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899798469*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "576"], " ", "\[Gamma]", " ", 
+  SuperscriptBox["\[Tau]", "4"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"8", " ", 
+     SuperscriptBox["\[Tau]", "2"]}], "-", 
+    RowBox[{"4", " ", "\[Gamma]", " ", 
+     SuperscriptBox["\[Tau]", "3"]}], "-", 
+    RowBox[{
+     SuperscriptBox["\[Gamma]", "2"], " ", 
+     SuperscriptBox["\[Tau]", "4"]}]}], ")"}]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899799459*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899800364*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], "0", "0"},
+     {"1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998015203`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "4"], "24"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899802556*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "7"], "360"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998032827`*^9}}],
+
+Cell[BoxData["0"], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998039713`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "6"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"8", " ", 
+        SuperscriptBox["\[Tau]", "4"]}], "3"]}], "+", 
+     FractionBox[
+      RowBox[{"5", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "5"]}], "3"]}], ")"}]}], "14400"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899804741*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "6"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"8", " ", 
+        SuperscriptBox["\[Tau]", "4"]}], "3"]}], "+", 
+     FractionBox[
+      RowBox[{"10", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "5"]}], "3"], "-", 
+     FractionBox[
+      RowBox[{"25", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "6"]}], "24"]}], ")"}]}], "14400"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899805697*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"\[Gamma]", " ", 
+   SuperscriptBox["\[Tau]", "6"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"8", " ", 
+        SuperscriptBox["\[Tau]", "4"]}], "3"]}], "+", 
+     FractionBox[
+      RowBox[{"10", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "5"]}], "3"], "-", 
+     FractionBox[
+      RowBox[{"25", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "6"]}], "24"]}], ")"}]}], "14400"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899806656*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899807596*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], "0", "0", "0"},
+     {"\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], "0"},
+     {"\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899808764*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "5"], "120"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998099747`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "9"], "8640"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899810717*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "12"], "259200"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998114634`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "9"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "24"}], " ", 
+      SuperscriptBox["\[Tau]", "5"]}], "-", 
+     RowBox[{"2", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "6"]}]}], ")"}]}], "12441600"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899812248*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "9"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "56"}], " ", 
+      SuperscriptBox["\[Tau]", "6"]}], "-", 
+     RowBox[{"18", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "7"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", "2"], " ", 
+      SuperscriptBox["\[Tau]", "8"]}]}], ")"}]}], "62208000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998131*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "9"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "336"}], " ", 
+      SuperscriptBox["\[Tau]", "6"]}], "+", 
+     RowBox[{"168", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "7"]}], "+", 
+     RowBox[{"27", " ", 
+      SuperscriptBox["\[Gamma]", "2"], " ", 
+      SuperscriptBox["\[Tau]", "8"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", "3"], " ", 
+      SuperscriptBox["\[Tau]", "9"]}]}], ")"}]}], "373248000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899814026*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"\[Gamma]", " ", 
+   SuperscriptBox["\[Tau]", "9"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "336"}], " ", 
+      SuperscriptBox["\[Tau]", "6"]}], "+", 
+     RowBox[{"168", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "7"]}], "+", 
+     RowBox[{"27", " ", 
+      SuperscriptBox["\[Gamma]", "2"], " ", 
+      SuperscriptBox["\[Tau]", "8"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", "3"], " ", 
+      SuperscriptBox["\[Tau]", "9"]}]}], ")"}]}], "373248000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899815093*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "7"], "5040"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899816061*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], "0", "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], "0", "0"},
+     {"1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"]},
+     {"0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899817309*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "6"], "720"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998186293`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "11"], "302400"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899819373*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "15"], "21772800"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899820105*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "18"], "228614400"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998208447`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "12"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "12"}], " ", 
+      SuperscriptBox["\[Tau]", "8"]}], "+", 
+     FractionBox[
+      RowBox[{"7", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "9"]}], "6"]}], ")"}]}], 
+  "18289152000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998216457`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "12"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"496", " ", 
+        SuperscriptBox["\[Tau]", "9"]}], "15"]}], "-", 
+     FractionBox[
+      RowBox[{"98", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "10"]}], "15"], "-", 
+     FractionBox[
+      RowBox[{"49", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "11"]}], "60"]}], ")"}]}], 
+  "128024064000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899822545*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "12"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"496", " ", 
+        SuperscriptBox["\[Tau]", "9"]}], "15"]}], "+", 
+     FractionBox[
+      RowBox[{"308", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "10"]}], "15"], "-", 
+     FractionBox[
+      RowBox[{"49", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "11"]}], "120"], "+", 
+     FractionBox[
+      RowBox[{"343", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "12"]}], "720"]}], ")"}]}], 
+  "128024064000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899823531*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"\[Gamma]", " ", 
+   SuperscriptBox["\[Tau]", "12"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"496", " ", 
+        SuperscriptBox["\[Tau]", "9"]}], "15"]}], "+", 
+     FractionBox[
+      RowBox[{"308", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "10"]}], "15"], "-", 
+     FractionBox[
+      RowBox[{"49", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "11"]}], "120"], "+", 
+     FractionBox[
+      RowBox[{"343", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "12"]}], "720"]}], ")"}]}], 
+  "128024064000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899824545*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "8"], "40320"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "7"], "5040"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899825543*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], "0", "0", "0", "0", "0", "0", 
+      "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], "0", "0", "0"},
+     {"\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], "0"},
+     {"\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"]},
+     {"0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899826859*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "7"], "5040"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899828253*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "13"], "14515200"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899829014*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "18"], "4064256000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162489982979*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "22"], "250822656000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899830575*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "16"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"520", " ", 
+        SuperscriptBox["\[Tau]", "9"]}], "3"]}], "-", 
+     RowBox[{"6", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "10"]}]}], ")"}]}], 
+  "983224811520000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899831374*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "16"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "1488"}], " ", 
+      SuperscriptBox["\[Tau]", "11"]}], "+", 
+     FractionBox[
+      RowBox[{"64", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "12"]}], "3"], "-", 
+     RowBox[{"2", " ", 
+      SuperscriptBox["\[Gamma]", "2"], " ", 
+      SuperscriptBox["\[Tau]", "13"]}]}], ")"}]}], 
+  "47194790952960000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899832274*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "16"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"62768", " ", 
+        SuperscriptBox["\[Tau]", "12"]}], "15"]}], "-", 
+     FractionBox[
+      RowBox[{"21304", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "13"]}], "15"], "-", 
+     FractionBox[
+      RowBox[{"508", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "14"]}], "15"], "-", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", "3"], " ", 
+      SuperscriptBox["\[Tau]", "15"]}]}], ")"}]}], 
+  "330363536670720000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899833218*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "16"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"502144", " ", 
+        SuperscriptBox["\[Tau]", "12"]}], "15"]}], "+", 
+     FractionBox[
+      RowBox[{"251072", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "13"]}], "15"], "+", 
+     FractionBox[
+      RowBox[{"42608", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "14"]}], "15"], "+", 
+     FractionBox[
+      RowBox[{"2032", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "15"]}], "45"], "+", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", "4"], " ", 
+      SuperscriptBox["\[Tau]", "16"]}]}], ")"}]}], 
+  "2642908293365760000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899834261*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"\[Gamma]", " ", 
+   SuperscriptBox["\[Tau]", "16"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"502144", " ", 
+        SuperscriptBox["\[Tau]", "12"]}], "15"]}], "+", 
+     FractionBox[
+      RowBox[{"251072", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "13"]}], "15"], "+", 
+     FractionBox[
+      RowBox[{"42608", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "14"]}], "15"], "+", 
+     FractionBox[
+      RowBox[{"2032", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "15"]}], "45"], "+", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", "4"], " ", 
+      SuperscriptBox["\[Tau]", "16"]}]}], ")"}]}], 
+  "2642908293365760000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162489983533*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "9"], "362880"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "8"], "40320"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "7"], "5040"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899836376*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], "0", "0", "0", "0", "0", "0",
+       "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], "0", "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], "0", "0"},
+     {"1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"]},
+     {"0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"]},
+     {"0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899837832*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "8"], "40320"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998394413`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "15"], "914457600"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998402042`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "21"], "1316818944000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998409452`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "26"], "553063956480000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899841729*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "30"], "47784725839872000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899842486*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "20"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "272"}], " ", 
+      SuperscriptBox["\[Tau]", "13"]}], "-", 
+     FractionBox[
+      RowBox[{"54", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "14"]}], "5"]}], ")"}]}], 
+  "240835018232954880000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899843297*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "20"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "256"}], " ", 
+      SuperscriptBox["\[Tau]", "15"]}], "+", 
+     RowBox[{"8", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "16"]}], "+", 
+     FractionBox[
+      RowBox[{"9", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "17"]}], "10"]}], ")"}]}], 
+  "1926680145863639040000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899844208*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "20"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"116096", " ", 
+        SuperscriptBox["\[Tau]", "16"]}], "175"]}], "-", 
+     FractionBox[
+      RowBox[{"73728", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "17"]}], "175"], "-", 
+     FractionBox[
+      RowBox[{"3951", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "18"]}], "175"], "-", 
+     FractionBox[
+      RowBox[{"81", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "19"]}], "280"]}], ")"}]}], 
+  "17340121312772751360000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998451653`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "20"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"116096", " ", 
+        SuperscriptBox["\[Tau]", "16"]}], "175"]}], "+", 
+     FractionBox[
+      RowBox[{"30048", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "17"]}], "175"], "+", 
+     FractionBox[
+      RowBox[{"25992", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "18"]}], "175"], "+", 
+     FractionBox[
+      RowBox[{"2367", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "19"]}], "350"], "+", 
+     FractionBox[
+      RowBox[{"729", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "20"]}], "4480"]}], ")"}]}], 
+  "17340121312772751360000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998462467`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"\[Gamma]", " ", 
+   SuperscriptBox["\[Tau]", "20"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"116096", " ", 
+        SuperscriptBox["\[Tau]", "16"]}], "175"]}], "+", 
+     FractionBox[
+      RowBox[{"30048", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "17"]}], "175"], "+", 
+     FractionBox[
+      RowBox[{"25992", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "18"]}], "175"], "+", 
+     FractionBox[
+      RowBox[{"2367", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "19"]}], "350"], "+", 
+     FractionBox[
+      RowBox[{"729", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "20"]}], "4480"]}], ")"}]}], 
+  "17340121312772751360000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899847378*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "10"], "3628800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "9"], "362880"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "8"], "40320"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "7"], "5040"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899848467*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], "0", "0", "0", "0", "0", 
+      "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], "0", "0", "0", "0", "0", 
+      "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], "0", "0", "0"},
+     {"\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], "0"},
+     {"\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"]},
+     {"0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"]},
+     {"0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998500547`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "9"], "362880"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899851816*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "17"], "73156608000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162489985256*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "24"], "663676747776000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162489985332*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"11", " ", 
+    SuperscriptBox["\[Tau]", "30"]}], "23892362919936000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998541327`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"71", " ", 
+    SuperscriptBox["\[Tau]", "35"]}], "60208754558238720000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899854907*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "25"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "18080"}], " ", 
+      SuperscriptBox["\[Tau]", "14"]}], "+", 
+     RowBox[{"176", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "15"]}]}], ")"}]}], 
+  "1387209705021820108800000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998557253`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "25"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "23792"}], " ", 
+      SuperscriptBox["\[Tau]", "17"]}], "-", 
+     RowBox[{"428", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "18"]}], "+", 
+     RowBox[{"10", " ", 
+      SuperscriptBox["\[Gamma]", "2"], " ", 
+      SuperscriptBox["\[Tau]", "19"]}]}], ")"}]}], 
+  "87394211416374666854400000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162489985666*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "25"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "39040"}], " ", 
+      SuperscriptBox["\[Tau]", "19"]}], "+", 
+     RowBox[{"55392", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "20"]}], "-", 
+     RowBox[{"700", " ", 
+      SuperscriptBox["\[Gamma]", "2"], " ", 
+      SuperscriptBox["\[Tau]", "21"]}], "+", 
+     RowBox[{"2", " ", 
+      SuperscriptBox["\[Gamma]", "3"], " ", 
+      SuperscriptBox["\[Tau]", "22"]}]}], ")"}]}], 
+  "6991536913309973348352000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998575983`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "25"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"1094272", " ", 
+       SuperscriptBox["\[Tau]", "20"]}], "7"], "+", 
+     FractionBox[
+      RowBox[{"172160", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "21"]}], "7"], "+", 
+     FractionBox[
+      RowBox[{"200436", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "22"]}], "7"], "-", 
+     FractionBox[
+      RowBox[{"1117", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "23"]}], "7"], "+", 
+     RowBox[{
+      SuperscriptBox["\[Gamma]", "4"], " ", 
+      SuperscriptBox["\[Tau]", "24"]}]}], ")"}]}], 
+  "62923832219789760135168000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899876809*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "25"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"10942720", " ", 
+        SuperscriptBox["\[Tau]", "20"]}], "7"], "-", 
+      FractionBox[
+       RowBox[{"5471360", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "21"]}], "7"], "-", 
+      FractionBox[
+       RowBox[{"430400", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "22"]}], "7"], "-", 
+      FractionBox[
+       RowBox[{"334060", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "23"]}], "7"], "+", 
+      FractionBox[
+       RowBox[{"5585", " ", 
+        SuperscriptBox["\[Gamma]", "4"], " ", 
+        SuperscriptBox["\[Tau]", "24"]}], "28"], "-", 
+      RowBox[{
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "25"]}]}], ")"}]}], ")"}], "/", 
+  "629238322197897601351680000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899879325*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"\[Gamma]", " ", 
+    SuperscriptBox["\[Tau]", "25"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"10942720", " ", 
+        SuperscriptBox["\[Tau]", "20"]}], "7"], "-", 
+      FractionBox[
+       RowBox[{"5471360", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "21"]}], "7"], "-", 
+      FractionBox[
+       RowBox[{"430400", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "22"]}], "7"], "-", 
+      FractionBox[
+       RowBox[{"334060", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "23"]}], "7"], "+", 
+      FractionBox[
+       RowBox[{"5585", " ", 
+        SuperscriptBox["\[Gamma]", "4"], " ", 
+        SuperscriptBox["\[Tau]", "24"]}], "28"], "-", 
+      RowBox[{
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "25"]}]}], ")"}]}], ")"}], "/", 
+  "629238322197897601351680000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899889111*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "11"], "39916800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "10"], "3628800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "9"], "362880"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "8"], "40320"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "7"], "5040"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899890828*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], "0", "0", "0", "0", "0", 
+      "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], "0", "0", "0", "0", "0", 
+      "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], "0", "0", "0", "0", "0", 
+      "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], "0", "0"},
+     {"1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"]},
+     {"0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"]},
+     {"0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"]},
+     {"0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", 
+      "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899892583*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "10"], "3628800"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998957777`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "19"], "7242504192000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899896648*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "27"], "486696281702400000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899897449*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"13", " ", 
+    SuperscriptBox["\[Tau]", "34"]}], "182131482538672128000000"]}]], "Print",\
+
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899898265*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"89", " ", 
+    SuperscriptBox["\[Tau]", "40"]}], 
+   "2622693348556878643200000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899899116*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"17", " ", 
+    SuperscriptBox["\[Tau]", "45"]}], 
+   "288496268341256650752000000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248998999434`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "30"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"8960", " ", 
+        SuperscriptBox["\[Tau]", "19"]}], "9"]}], "+", 
+     FractionBox[
+      RowBox[{"3916", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "20"]}], "45"]}], ")"}]}], 
+  "9305735631615574526656512000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899900799*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "30"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"59264", " ", 
+       SuperscriptBox["\[Tau]", "22"]}], "9"], "+", 
+     FractionBox[
+      RowBox[{"10516", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "23"]}], "45"], "+", 
+     FractionBox[
+      RowBox[{"1573", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "24"]}], "315"]}], ")"}]}], 
+  "921267827529941878138994688000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899906393*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "30"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"225920", " ", 
+       SuperscriptBox["\[Tau]", "24"]}], "21"], "+", 
+     FractionBox[
+      RowBox[{"181324", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "25"]}], "315"], "-", 
+     FractionBox[
+      RowBox[{"121847", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "26"]}], "2520"], "-", 
+     FractionBox[
+      RowBox[{"1331", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "27"]}], "3360"]}], ")"}]}], 
+  "9212678275299418781389946880000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899920429*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "30"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"756638464", " ", 
+        SuperscriptBox["\[Tau]", "25"]}], "19845"], "+", 
+      FractionBox[
+       RowBox[{"456781952", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "26"]}], "19845"], "+", 
+      FractionBox[
+       RowBox[{"17219147", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "27"]}], "6615"], "+", 
+      FractionBox[
+       RowBox[{"9528629", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "28"]}], "317520"], "+", 
+      FractionBox[
+       RowBox[{"14641", " ", 
+        SuperscriptBox["\[Gamma]", "4"], " ", 
+        SuperscriptBox["\[Tau]", "29"]}], "181440"]}], ")"}]}], ")"}], "/", 
+  "101339461028293606595289415680000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899940943*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "30"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"756638464", " ", 
+        SuperscriptBox["\[Tau]", "25"]}], "19845"], "-", 
+      FractionBox[
+       RowBox[{"205527872", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "26"]}], "19845"], "-", 
+      FractionBox[
+       RowBox[{"148319501", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "27"]}], "19845"], "-", 
+      FractionBox[
+       RowBox[{"68510563", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "28"]}], "79380"], "-", 
+      FractionBox[
+       RowBox[{"121212839", " ", 
+        SuperscriptBox["\[Gamma]", "4"], " ", 
+        SuperscriptBox["\[Tau]", "29"]}], "10160640"], "-", 
+      FractionBox[
+       RowBox[{"161051", " ", 
+        SuperscriptBox["\[Gamma]", "5"], " ", 
+        SuperscriptBox["\[Tau]", "30"]}], "3628800"]}], ")"}]}], ")"}], "/", 
+  "101339461028293606595289415680000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899966896*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"\[Gamma]", " ", 
+    SuperscriptBox["\[Tau]", "30"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"756638464", " ", 
+        SuperscriptBox["\[Tau]", "25"]}], "19845"], "-", 
+      FractionBox[
+       RowBox[{"205527872", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "26"]}], "19845"], "-", 
+      FractionBox[
+       RowBox[{"148319501", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "27"]}], "19845"], "-", 
+      FractionBox[
+       RowBox[{"68510563", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "28"]}], "79380"], "-", 
+      FractionBox[
+       RowBox[{"121212839", " ", 
+        SuperscriptBox["\[Gamma]", "4"], " ", 
+        SuperscriptBox["\[Tau]", "29"]}], "10160640"], "-", 
+      FractionBox[
+       RowBox[{"161051", " ", 
+        SuperscriptBox["\[Gamma]", "5"], " ", 
+        SuperscriptBox["\[Tau]", "30"]}], "3628800"]}], ")"}]}], ")"}], "/", 
+  "101339461028293606595289415680000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899992753*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "12"], "479001600"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "11"], "39916800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "10"], "3628800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "9"], "362880"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "8"], "40320"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "7"], "5040"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248999945803`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], "0", "0", "0", "0", "0", 
+      "0", "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], "0", "0", "0", "0", "0", 
+      "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], "0", "0", "0", "0", "0", 
+      "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], "0", "0", "0", "0", 
+      "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], "0", "0", "0"},
+     {"\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], "0"},
+     {"\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"]},
+     {"0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"]},
+     {"0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"]},
+     {"0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", 
+      "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899996482*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "11"], "39916800"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624899998817*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "21"], "869100503040000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016248999996767`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "30"], "495595870853529600000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162490000045*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "38"], "139876978589700194304000000"]}]], "Print",\
+
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900001252*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"17", " ", 
+    SuperscriptBox["\[Tau]", "45"]}], 
+   "31724098744144004068147200000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900002046*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"607", " ", 
+    SuperscriptBox["\[Tau]", "51"]}], 
+   "5025097241072410244394516480000000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900002849*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "36"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"885024", " ", 
+       SuperscriptBox["\[Tau]", "20"]}], "5"], "-", 
+     RowBox[{"8976", " ", "\[Gamma]", " ", 
+      SuperscriptBox["\[Tau]", "21"]}]}], ")"}]}], 
+  "8023432062097567409737881417154560000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900009488*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "36"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"8252160", " ", 
+      SuperscriptBox["\[Tau]", "24"]}], "-", 
+     FractionBox[
+      RowBox[{"357696", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "25"]}], "5"], "+", 
+     RowBox[{"240", " ", 
+      SuperscriptBox["\[Gamma]", "2"], " ", 
+      SuperscriptBox["\[Tau]", "26"]}]}], ")"}]}], 
+  "7702494779613664713348366160468377600000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900010612*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "36"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"23068032", " ", 
+      SuperscriptBox["\[Tau]", "27"]}], "+", 
+     FractionBox[
+      RowBox[{"1181136", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "28"]}], "7"], "-", 
+     FractionBox[
+      RowBox[{"48888", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "29"]}], "5"], "+", 
+     RowBox[{"14", " ", 
+      SuperscriptBox["\[Gamma]", "3"], " ", 
+      SuperscriptBox["\[Tau]", "30"]}]}], ")"}]}], 
+  "762546983181752806621488249886369382400000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249000204353`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "36"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"1503463680", " ", 
+        SuperscriptBox["\[Tau]", "29"]}], "7"], "-", 
+      FractionBox[
+       RowBox[{"1953749568", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "30"]}], "35"], "+", 
+      FractionBox[
+       RowBox[{"56661288", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "31"]}], "35"], "-", 
+      FractionBox[
+       RowBox[{"139584", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "32"]}], "35"], "+", 
+      RowBox[{"2", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "33"]}]}], ")"}]}], ")"}], "/", 
+  "91505637981810336794578589986364325888000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900044197*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "36"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"148652595968", " ", 
+        SuperscriptBox["\[Tau]", "30"]}], "245"], "+", 
+      FractionBox[
+       RowBox[{"58299259264", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "31"]}], "245"], "-", 
+      FractionBox[
+       RowBox[{"6490139664", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "32"]}], "245"], "+", 
+      FractionBox[
+       RowBox[{"173437052", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "33"]}], "245"], "-", 
+      FractionBox[
+       RowBox[{"56011", " ", 
+        SuperscriptBox["\[Gamma]", "4"], " ", 
+        SuperscriptBox["\[Tau]", "34"]}], "35"], "+", 
+      RowBox[{
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "35"]}]}], ")"}]}], ")"}], "/", 
+  "1006562017799913704740364489850007584768000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249000884247`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "36"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"8919155758080", " ", 
+       SuperscriptBox["\[Tau]", "30"]}], "-", 
+      RowBox[{"4459577879040", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "31"]}], "-", 
+      RowBox[{"874488888960", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "32"]}], "+", 
+      RowBox[{"64901396640", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "33"]}], "-", 
+      RowBox[{"1300777890", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "34"]}], "+", 
+      RowBox[{"2352462", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "35"]}], "-", 
+      RowBox[{"1225", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "36"]}]}], ")"}]}], ")"}], "/", 
+  "14796461661658731459683358000795111496089600000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249001029377`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"\[Gamma]", " ", 
+    SuperscriptBox["\[Tau]", "36"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"8919155758080", " ", 
+       SuperscriptBox["\[Tau]", "30"]}], "-", 
+      RowBox[{"4459577879040", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "31"]}], "-", 
+      RowBox[{"874488888960", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "32"]}], "+", 
+      RowBox[{"64901396640", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "33"]}], "-", 
+      RowBox[{"1300777890", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "34"]}], "+", 
+      RowBox[{"2352462", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "35"]}], "-", 
+      RowBox[{"1225", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "36"]}]}], ")"}]}], ")"}], "/", 
+  "14796461661658731459683358000795111496089600000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900114933*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "13"], "6227020800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "12"], "479001600"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "11"], "39916800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "10"], "3628800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "9"], "362880"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "8"], "40320"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "7"], "5040"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900116571*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], "0", "0", "0", "0", "0",
+       "0", "0", "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], "0", "0", "0", "0", "0",
+       "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], "0", "0", "0", "0", "0",
+       "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], "0", "0", "0", "0", "0",
+       "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], "0", "0"},
+     {"1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"]},
+     {"0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"]},
+     {"0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"]},
+     {"0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"]},
+     {"0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", 
+      "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+      "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900122703*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "12"], "479001600"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900126466*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "23"], "124281371934720000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900127346*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "33"], "676488363715067904000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900128145*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"17", " ", 
+    SuperscriptBox["\[Tau]", "42"]}], 
+   "35104225931764109263503360000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900128953*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "50"], 
+   "202200341366961269357779353600000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900129781*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"409", " ", 
+    SuperscriptBox["\[Tau]", "57"]}], 
+   "3278921175674917336159621553848320000000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162490013062*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"79", " ", 
+   SuperscriptBox["\[Tau]", "63"]}], 
+  "5902058116214851205087318796926976000000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900131419*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "42"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"21242112", " ", 
+       SuperscriptBox["\[Tau]", "26"]}], "25"], "-", 
+     FractionBox[
+      RowBox[{"85072", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "27"]}], "15"]}], ")"}]}], 
+  "21779104386654041909916325905004595930726400000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900132276*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "42"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"1395968", " ", 
+       SuperscriptBox["\[Tau]", "30"]}], "3"], "-", 
+     FractionBox[
+      RowBox[{"629408", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "31"]}], "75"], "+", 
+     FractionBox[
+      RowBox[{"169", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "32"]}], "3"]}], ")"}]}], 
+  "2613492526398485029189959108600551511687168000000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900144046*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SuperscriptBox["\[Tau]", "42"], " ", 
+   RowBox[{"(", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"1233188608", " ", 
+       SuperscriptBox["\[Tau]", "33"]}], "945"], "+", 
+     FractionBox[
+      RowBox[{"94033472", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "34"]}], "675"], "-", 
+     FractionBox[
+      RowBox[{"4044001", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "35"]}], "4725"], "+", 
+     FractionBox[
+      RowBox[{"37349", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "36"]}], "22680"]}], ")"}]}], 
+  "373729431274983359174164152529878866171265024000000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900171105*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "42"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"414748672", " ", 
+        SuperscriptBox["\[Tau]", "35"]}], "315"], "-", 
+      FractionBox[
+       RowBox[{"2671080256", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "36"]}], "23625"], "-", 
+      FractionBox[
+       RowBox[{"51534184", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "37"]}], "23625"], "-", 
+      FractionBox[
+       RowBox[{"4484077", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "38"]}], "94500"], "-", 
+      FractionBox[
+       RowBox[{"28561", " ", 
+        SuperscriptBox["\[Gamma]", "4"], " ", 
+        SuperscriptBox["\[Tau]", "39"]}], "226800"]}], ")"}]}], ")"}], "/", 
+  "4484753175299800310089969830358546394055180288000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162490023965*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "42"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"3289283054927872", " ", 
+       SuperscriptBox["\[Tau]", "36"]}], "+", 
+      RowBox[{"1856281871015936", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "37"]}], "+", 
+      RowBox[{"127245501986304", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "38"]}], "+", 
+      RowBox[{"8720771167264", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "39"]}], "+", 
+      RowBox[{"13528888724", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "40"]}], "+", 
+      RowBox[{"12995255", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "41"]}]}], ")"}]}], ")"}], "/", 
+  "40726366487126108201549342507313745619755464168308736000000000000000"}]], \
+"Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249002536993`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "42"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"394713966591344640", " ", 
+       SuperscriptBox["\[Tau]", "36"]}], "-", 
+      RowBox[{"127482003562168320", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "37"]}], "-", 
+      RowBox[{"68101960813486080", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "38"]}], "-", 
+      RowBox[{"6307510953569280", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "39"]}], "-", 
+      RowBox[{"324586678032240", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "40"]}], "-", 
+      RowBox[{"854897676984", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "41"]}], "-", 
+      RowBox[{"844691575", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "42"]}]}], ")"}]}], ")"}], "/", 
+  "4887163978455132984185921100877649474370655700197048320000000000000000"}]],\
+ "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900268414*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"\[Gamma]", " ", 
+    SuperscriptBox["\[Tau]", "42"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"394713966591344640", " ", 
+       SuperscriptBox["\[Tau]", "36"]}], "-", 
+      RowBox[{"127482003562168320", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "37"]}], "-", 
+      RowBox[{"68101960813486080", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "38"]}], "-", 
+      RowBox[{"6307510953569280", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "39"]}], "-", 
+      RowBox[{"324586678032240", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "40"]}], "-", 
+      RowBox[{"854897676984", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "41"]}], "-", 
+      RowBox[{"844691575", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "42"]}]}], ")"}]}], ")"}], "/", 
+  "4887163978455132984185921100877649474370655700197048320000000000000000"}]],\
+ "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162490028123*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "14"], "87178291200"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "13"], "6227020800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "12"], "479001600"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "11"], "39916800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "10"], "3628800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "9"], "362880"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "8"], "40320"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "7"], "5040"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900287463*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], "0", "0", "0", "0", 
+      "0", "0", "0", "0", "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], "0", "0", "0", "0", 
+      "0", "0", "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], "0", "0", "0", "0", 
+      "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], "0", "0", "0", "0", 
+      "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], "0", "0", "0", "0", 
+      "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], "0", "0", "0"},
+     {"\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], "0"},
+     {"\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"]},
+     {"0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"]},
+     {"0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"]},
+     {"0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", 
+      "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", 
+      "1", "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+      "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900289719*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "13"], "6227020800"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249002924633`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "25"], "20879270485032960000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900293442*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "36"], "1203848625917836394496000000"]}]], "Print",\
+
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900295314*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"19", " ", 
+    SuperscriptBox["\[Tau]", "46"]}], 
+   "825651393915091849877599027200000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249002961903`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"241", " ", 
+    SuperscriptBox["\[Tau]", "55"]}], 
+   "8568914005763783971830477660723609600000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249002969837`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"283", " ", 
+    SuperscriptBox["\[Tau]", "63"]}], 
+   "4030817148311283980349056691604385955840000000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900297842*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"137279", " ", 
+   SuperscriptBox["\[Tau]", "70"]}], 
+  "78437444448534531938563647746874052244511129600000000000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249002986507`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "49"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"10019588096", " ", 
+        SuperscriptBox["\[Tau]", "27"]}], "5"], "+", 
+      RowBox[{"3260160", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "28"]}]}], ")"}]}], ")"}], "/", 
+  "4048125133011087779536494434757071086718321594204160000000000000"}]], \
+"Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249002996073`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "49"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"46080315648", " ", 
+        SuperscriptBox["\[Tau]", "32"]}], "25"], "+", 
+      FractionBox[
+       RowBox[{"20356960", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "33"]}], "3"], "+", 
+      RowBox[{"19280", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "34"]}]}], ")"}]}], ")"}], "/", 
+  "5209937046185269972263468337532350488606479891740753920000000000000"}]], \
+"Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900309588*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "49"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"48642947584", " ", 
+        SuperscriptBox["\[Tau]", "36"]}], "3"], "-", 
+      FractionBox[
+       RowBox[{"37915700608", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "37"]}], "75"], "-", 
+      FractionBox[
+       RowBox[{"8574392", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "38"]}], "15"], "-", 
+      RowBox[{"304", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "39"]}]}], ")"}]}], ")"}], "/", 
+  "8752694237591253553402626807054348820858886218124466585600000000000000"}]],\
+ "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249003324223`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "49"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"6820021260032", " ", 
+        SuperscriptBox["\[Tau]", "39"]}], "135"], "+", 
+      FractionBox[
+       RowBox[{"810325545472", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "40"]}], "675"], "-", 
+      FractionBox[
+       RowBox[{"579350316", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "41"]}], "25"], "+", 
+      FractionBox[
+       RowBox[{"19698203", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "42"]}], "405"], "-", 
+      RowBox[{"18", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "43"]}]}], ")"}]}], ")"}], "/", 
+  "1251635275975549258136575633408771881382820729191798721740800000000000000"}\
+]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900395537*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "49"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"5852171919283200", " ", 
+       SuperscriptBox["\[Tau]", "41"]}], "-", 
+      RowBox[{"1775210238662016", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "42"]}], "+", 
+      RowBox[{"42274455636336", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "43"]}], "-", 
+      RowBox[{"388152401898", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "44"]}], "+", 
+      RowBox[{"121683985", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "45"]}], "-", 
+      RowBox[{"20250", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "46"]}]}], ")"}]}], ")"}], "/", 
+  "212903160443440928809031515242832097023217806035524962568110080000000000000\
+0000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900411626*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "49"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"768970305209348096", " ", 
+       SuperscriptBox["\[Tau]", "42"]}], "+", 
+      RowBox[{"314737499759861248", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "43"]}], "-", 
+      RowBox[{"46248675519263808", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "44"]}], "+", 
+      RowBox[{"996408543091112", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "45"]}], "-", 
+      RowBox[{"7078848008654", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "46"]}], "+", 
+      RowBox[{"3243194375", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "47"]}], "-", 
+      RowBox[{"445500", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "48"]}]}], ")"}]}], ")"}], "/", 
+  "121780607773648211278766026718899959497280585052320278588958965760000000000\
+0000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900428904*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "49"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"322967528187926200320", " ", 
+       SuperscriptBox["\[Tau]", "42"]}], "-", 
+      RowBox[{"161483764093963100160", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "43"]}], "-", 
+      RowBox[{"33047437474785431040", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "44"]}], "+", 
+      RowBox[{"3237407286348466560", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "45"]}], "-", 
+      RowBox[{"52311448512283380", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "46"]}], "+", 
+      RowBox[{"297311616363468", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "47"]}], "-", 
+      RowBox[{"113511803125", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "48"]}], "+", 
+      RowBox[{"13365000", " ", 
+       SuperscriptBox["\[Gamma]", "7"], " ", 
+       SuperscriptBox["\[Tau]", "49"]}]}], ")"}]}], ")"}], "/", 
+  "511478552649322487370817312219379829888578457219745170073627656192000000000\
+000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249004485903`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"\[Gamma]", " ", 
+    SuperscriptBox["\[Tau]", "49"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"322967528187926200320", " ", 
+       SuperscriptBox["\[Tau]", "42"]}], "-", 
+      RowBox[{"161483764093963100160", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "43"]}], "-", 
+      RowBox[{"33047437474785431040", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "44"]}], "+", 
+      RowBox[{"3237407286348466560", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "45"]}], "-", 
+      RowBox[{"52311448512283380", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "46"]}], "+", 
+      RowBox[{"297311616363468", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "47"]}], "-", 
+      RowBox[{"113511803125", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "48"]}], "+", 
+      RowBox[{"13365000", " ", 
+       SuperscriptBox["\[Gamma]", "7"], " ", 
+       SuperscriptBox["\[Tau]", "49"]}]}], ")"}]}], ")"}], "/", 
+  "511478552649322487370817312219379829888578457219745170073627656192000000000\
+000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900464836*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    SuperscriptBox["\[Tau]", "15"], "1307674368000"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "14"], "87178291200"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "13"], "6227020800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "12"], "479001600"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "11"], "39916800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "10"], "3628800"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "9"], "362880"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "8"], "40320"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "7"], "5040"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "6"], "720"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "5"], "120"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "4"], "24"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "3"], "6"], ",", 
+   FractionBox[
+    SuperscriptBox["\[Tau]", "2"], "2"], ",", "\[Tau]", ",", "1", ",", 
+   "\[Gamma]"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900467813*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "15"], "1307674368000"], "0", "0", "0", "0", 
+      "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "15"], "1307674368000"], "0", "0", "0", "0", 
+      "0", "0", "0", "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "15"], "1307674368000"], "0", "0", "0", "0", 
+      "0", "0", "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "15"], "1307674368000"], "0", "0", "0", "0", 
+      "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "15"], "1307674368000"], "0", "0", "0", "0", 
+      "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "15"], "1307674368000"], "0", "0", "0", "0"},
+     {
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "15"], "1307674368000"], "0", "0"},
+     {"1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "14"], "87178291200"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "15"], "1307674368000"]},
+     {"0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "12"], "479001600"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "13"], "6227020800"]},
+     {"0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "10"], "3628800"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "11"], "39916800"]},
+     {"0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "8"], "40320"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "9"], "362880"]},
+     {"0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "6"], "720"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "7"], "5040"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", "\[Tau]", 
+      
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "4"], "24"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "5"], "120"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "\[Gamma]", "1", 
+      "\[Tau]", 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "2"], "2"], 
+      FractionBox[
+       SuperscriptBox["\[Tau]", "3"], "6"]},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+      "\[Gamma]", "1", "\[Tau]"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+      "0", "\[Gamma]"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900473919*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "14"], "87178291200"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249004770117`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[Tau]", "27"], "4071457744581427200000"]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900477848*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "39"], 
+   "2730328683581652942716928000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900478675*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   SuperscriptBox["\[Tau]", "50"], 
+   "1265015885677051441419607080960000000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900479506*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"139", " ", 
+    SuperscriptBox["\[Tau]", "60"]}], 
+   "1349603955907795975563300231563968512000000000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.60162490048035*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  FractionBox[
+   RowBox[{"401", " ", 
+    SuperscriptBox["\[Tau]", "69"]}], 
+   "17508358135833600879143671372070100947435520000000000000"]}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900481194*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"2369", " ", 
+   SuperscriptBox["\[Tau]", "77"]}], 
+  "24707795001288377560647549040265326457021005824000000000000000"]], "Print",\
+
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900482106*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"5777", " ", 
+    SuperscriptBox["\[Tau]", "84"]}], ")"}], "/", 
+  "2225925251666069934438737693037503260513022414684160000000000000000"}]], \
+"Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900484234*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "56"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"129434112", " ", 
+       SuperscriptBox["\[Tau]", "34"]}], "-", 
+      FractionBox[
+       RowBox[{"3411360", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "35"]}], "7"]}], ")"}]}], ")"}], "/", 
+  "443105145778057211141007982107126409055981114792551120896000000000000000000\
+"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900493429*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "56"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"301459968", " ", 
+       SuperscriptBox["\[Tau]", "39"]}], "-", 
+      FractionBox[
+       RowBox[{"16572000", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "40"]}], "7"], "+", 
+      FractionBox[
+       RowBox[{"20050", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "41"]}], "7"]}], ")"}]}], ")"}], "/", 
+  "950460537693932717897462121619786147425079491230022154321920000000000000000\
+000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249005134773`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "56"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"185133312", " ", 
+       SuperscriptBox["\[Tau]", "43"]}], "-", 
+      FractionBox[
+       RowBox[{"41003552", " ", "\[Gamma]", " ", 
+        SuperscriptBox["\[Tau]", "44"]}], "5"], "+", 
+      FractionBox[
+       RowBox[{"1439971", " ", 
+        SuperscriptBox["\[Gamma]", "2"], " ", 
+        SuperscriptBox["\[Tau]", "45"]}], "42"], "-", 
+      FractionBox[
+       RowBox[{"695", " ", 
+        SuperscriptBox["\[Gamma]", "3"], " ", 
+        SuperscriptBox["\[Tau]", "46"]}], "28"]}], ")"}]}], ")"}], "/", 
+  "159677370332580696606773636432124072767413354526643721926082560000000000000\
+000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900574794*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "56"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"12791085318144", " ", 
+       SuperscriptBox["\[Tau]", "46"]}], "+", 
+      RowBox[{"1234193462784", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "47"]}], "-", 
+      RowBox[{"58301238144", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "48"]}], "+", 
+      RowBox[{"81621175", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "49"]}], "-", 
+      RowBox[{"14175", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "50"]}]}], ")"}]}], ")"}], "/", 
+  "103574406911487803692590505724424415552437137586998396939909600378880000000\
+0000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249005918922`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "56"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"1334340754145280", " ", 
+       SuperscriptBox["\[Tau]", "48"]}], "-", 
+      RowBox[{"1037708104863744", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "49"]}], "+", 
+      RowBox[{"28622156826240", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "50"]}], "+", 
+      RowBox[{"365627488392", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "51"]}], "-", 
+      RowBox[{"167804765", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "52"]}], "+", 
+      RowBox[{"253125", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "53"]}]}], ")"}]}], ")"}], "/", 
+  "348010007222599020407104099234066036256188782292314613718096257273036800000\
+0000000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249006106577`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "56"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"39549382297649152", " ", 
+       SuperscriptBox["\[Tau]", "49"]}], "-", 
+      RowBox[{"17283381749678080", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "50"]}], "-", 
+      RowBox[{"22096002217506816", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "51"]}], "+", 
+      RowBox[{"374626645142656", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "52"]}], "-", 
+      RowBox[{"8782512717668", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "53"]}], "+", 
+      RowBox[{"194618375", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "54"]}], "-", 
+      RowBox[{"556875", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "55"]}]}], ")"}]}], ")"}], "/", 
+  "995308620656633198364317723809428863692699917356019795233755295800885248000\
+000000000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.601624900629637*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SuperscriptBox["\[Tau]", "56"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"66442962260050575360", " ", 
+       SuperscriptBox["\[Tau]", "49"]}], "-", 
+      RowBox[{"96971815824622878720", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "50"]}], "+", 
+      RowBox[{"20788092830842552320", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "51"]}], "+", 
+      RowBox[{"9010404341903892480", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "52"]}], "-", 
+      RowBox[{"61560728993484000", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "53"]}], "+", 
+      RowBox[{"4165317912487536", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "54"]}], "+", 
+      RowBox[{"862419830125", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "55"]}], "+", 
+      RowBox[{"501187500", " ", 
+       SuperscriptBox["\[Gamma]", "7"], " ", 
+       SuperscriptBox["\[Tau]", "56"]}]}], ")"}]}], ")"}], "/", 
+  "167211848270314377325205377599984049100373586115811325599270889694548721664\
+0000000000000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249006493*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"\[Gamma]", " ", 
+    SuperscriptBox["\[Tau]", "56"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"66442962260050575360", " ", 
+       SuperscriptBox["\[Tau]", "49"]}], "-", 
+      RowBox[{"96971815824622878720", " ", "\[Gamma]", " ", 
+       SuperscriptBox["\[Tau]", "50"]}], "+", 
+      RowBox[{"20788092830842552320", " ", 
+       SuperscriptBox["\[Gamma]", "2"], " ", 
+       SuperscriptBox["\[Tau]", "51"]}], "+", 
+      RowBox[{"9010404341903892480", " ", 
+       SuperscriptBox["\[Gamma]", "3"], " ", 
+       SuperscriptBox["\[Tau]", "52"]}], "-", 
+      RowBox[{"61560728993484000", " ", 
+       SuperscriptBox["\[Gamma]", "4"], " ", 
+       SuperscriptBox["\[Tau]", "53"]}], "+", 
+      RowBox[{"4165317912487536", " ", 
+       SuperscriptBox["\[Gamma]", "5"], " ", 
+       SuperscriptBox["\[Tau]", "54"]}], "+", 
+      RowBox[{"862419830125", " ", 
+       SuperscriptBox["\[Gamma]", "6"], " ", 
+       SuperscriptBox["\[Tau]", "55"]}], "+", 
+      RowBox[{"501187500", " ", 
+       SuperscriptBox["\[Gamma]", "7"], " ", 
+       SuperscriptBox["\[Tau]", "56"]}]}], ")"}]}], ")"}], "/", 
+  "167211848270314377325205377599984049100373586115811325599270889694548721664\
+0000000000000000000000"}]], "Print",
+ CellChangeTimes->{
+  3.601624191368487*^9, 3.601624222577279*^9, {3.601624876115817*^9, 
+   3.6016249006671267`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{681, 715},
+WindowMargins->{{-7, Automatic}, {Automatic, -7}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 9202, 173, 561, "Input"],
+Cell[CellGroupData[{
+Cell[9806, 199, 213, 5, 23, "Print"],
+Cell[10022, 206, 713, 20, 37, "Print"],
+Cell[10738, 228, 144, 3, 23, "Print"],
+Cell[10885, 233, 153, 3, 23, "Print"],
+Cell[11041, 238, 278, 8, 45, "Print"],
+Cell[11322, 248, 816, 23, 69, "Print"],
+Cell[12141, 273, 151, 3, 23, "Print"],
+Cell[12295, 278, 254, 7, 45, "Print"],
+Cell[12552, 287, 303, 8, 41, "Print"],
+Cell[12858, 297, 343, 10, 45, "Print"],
+Cell[13204, 309, 1035, 30, 101, "Print"],
+Cell[14242, 341, 193, 5, 45, "Print"],
+Cell[14438, 348, 195, 5, 45, "Print"],
+Cell[14636, 355, 404, 12, 45, "Print"],
+Cell[15043, 369, 419, 12, 45, "Print"],
+Cell[15465, 383, 405, 12, 45, "Print"],
+Cell[15873, 397, 1280, 37, 133, "Print"],
+Cell[17156, 436, 193, 5, 45, "Print"],
+Cell[17352, 443, 196, 5, 45, "Print"],
+Cell[17551, 450, 396, 12, 41, "Print"],
+Cell[17950, 464, 507, 15, 41, "Print"],
+Cell[18460, 481, 524, 15, 41, "Print"],
+Cell[18987, 498, 470, 14, 45, "Print"],
+Cell[19460, 514, 1644, 48, 165, "Print"],
+Cell[21107, 564, 194, 5, 45, "Print"],
+Cell[21304, 571, 197, 5, 45, "Print"],
+Cell[21504, 578, 146, 3, 23, "Print"],
+Cell[21653, 583, 481, 15, 57, "Print"],
+Cell[22137, 600, 625, 19, 57, "Print"],
+Cell[22765, 621, 642, 19, 57, "Print"],
+Cell[23410, 642, 535, 16, 45, "Print"],
+Cell[23948, 660, 2029, 59, 197, "Print"],
+Cell[25980, 721, 197, 5, 45, "Print"],
+Cell[26180, 728, 196, 5, 45, "Print"],
+Cell[26379, 735, 220, 6, 45, "Print"],
+Cell[26602, 743, 431, 13, 47, "Print"],
+Cell[27036, 758, 534, 16, 47, "Print"],
+Cell[27573, 776, 654, 19, 47, "Print"],
+Cell[28230, 797, 671, 19, 47, "Print"],
+Cell[28904, 818, 601, 18, 45, "Print"],
+Cell[29508, 838, 2539, 74, 229, "Print"],
+Cell[32050, 914, 197, 5, 45, "Print"],
+Cell[32250, 921, 199, 5, 45, "Print"],
+Cell[32452, 928, 220, 6, 45, "Print"],
+Cell[32675, 936, 223, 6, 45, "Print"],
+Cell[32901, 944, 466, 15, 57, "Print"],
+Cell[33370, 961, 642, 20, 57, "Print"],
+Cell[34015, 983, 790, 24, 57, "Print"],
+Cell[34808, 1009, 807, 24, 57, "Print"],
+Cell[35618, 1035, 668, 20, 45, "Print"],
+Cell[36289, 1057, 3084, 90, 261, "Print"],
+Cell[39376, 1149, 196, 5, 45, "Print"],
+Cell[39575, 1156, 201, 5, 45, "Print"],
+Cell[39779, 1163, 221, 6, 45, "Print"],
+Cell[40003, 1171, 224, 6, 45, "Print"],
+Cell[40230, 1179, 472, 15, 56, "Print"],
+Cell[40705, 1196, 590, 18, 57, "Print"],
+Cell[41298, 1216, 760, 23, 57, "Print"],
+Cell[42061, 1241, 911, 27, 57, "Print"],
+Cell[42975, 1270, 927, 27, 57, "Print"],
+Cell[43905, 1299, 736, 22, 45, "Print"],
+Cell[44644, 1323, 3749, 109, 293, "Print"],
+Cell[48396, 1434, 199, 5, 45, "Print"],
+Cell[48598, 1441, 204, 5, 45, "Print"],
+Cell[48805, 1448, 227, 6, 45, "Print"],
+Cell[49035, 1456, 227, 6, 45, "Print"],
+Cell[49265, 1464, 229, 6, 45, "Print"],
+Cell[49497, 1472, 478, 15, 57, "Print"],
+Cell[49978, 1489, 595, 18, 57, "Print"],
+Cell[50576, 1509, 812, 24, 57, "Print"],
+Cell[51391, 1535, 962, 28, 57, "Print"],
+Cell[52356, 1565, 977, 28, 57, "Print"],
+Cell[53336, 1595, 806, 24, 45, "Print"],
+Cell[54145, 1621, 4458, 129, 325, "Print"],
+Cell[58606, 1752, 198, 5, 45, "Print"],
+Cell[58807, 1759, 203, 5, 45, "Print"],
+Cell[59013, 1766, 226, 6, 45, "Print"],
+Cell[59242, 1774, 260, 7, 45, "Print"],
+Cell[59505, 1783, 261, 7, 45, "Print"],
+Cell[59769, 1792, 464, 14, 47, "Print"],
+Cell[60236, 1808, 578, 17, 47, "Print"],
+Cell[60817, 1827, 701, 20, 47, "Print"],
+Cell[61521, 1849, 898, 26, 57, "Print"],
+Cell[62422, 1877, 1099, 31, 108, "Print"],
+Cell[63524, 1910, 1116, 31, 108, "Print"],
+Cell[64643, 1943, 877, 26, 87, "Print"],
+Cell[65523, 1971, 5303, 154, 357, "Print"],
+Cell[70829, 2127, 202, 5, 45, "Print"],
+Cell[71034, 2134, 206, 5, 45, "Print"],
+Cell[71243, 2141, 230, 6, 45, "Print"],
+Cell[71476, 2149, 264, 8, 45, "Print"],
+Cell[71743, 2159, 270, 8, 45, "Print"],
+Cell[72016, 2169, 274, 8, 45, "Print"],
+Cell[72293, 2179, 523, 16, 57, "Print"],
+Cell[72819, 2197, 650, 19, 57, "Print"],
+Cell[73472, 2218, 806, 23, 57, "Print"],
+Cell[74281, 2243, 1024, 28, 108, "Print"],
+Cell[75308, 2273, 1189, 32, 108, "Print"],
+Cell[76500, 2307, 1206, 32, 108, "Print"],
+Cell[77709, 2341, 951, 28, 87, "Print"],
+Cell[78663, 2371, 6175, 178, 389, "Print"],
+Cell[84841, 2551, 201, 5, 45, "Print"],
+Cell[85045, 2558, 210, 5, 45, "Print"],
+Cell[85258, 2565, 232, 6, 45, "Print"],
+Cell[85493, 2573, 241, 7, 45, "Print"],
+Cell[85737, 2582, 274, 8, 45, "Print"],
+Cell[86014, 2592, 280, 8, 45, "Print"],
+Cell[86297, 2602, 483, 14, 56, "Print"],
+Cell[86783, 2618, 606, 17, 57, "Print"],
+Cell[87392, 2637, 757, 21, 57, "Print"],
+Cell[88152, 2660, 986, 27, 108, "Print"],
+Cell[89141, 2689, 1144, 31, 108, "Print"],
+Cell[90288, 2722, 1150, 29, 94, "Print"],
+Cell[91441, 2753, 1165, 29, 94, "Print"],
+Cell[92609, 2784, 1022, 30, 87, "Print"],
+Cell[93634, 2816, 7191, 207, 421, "Print"],
+Cell[100828, 3025, 202, 5, 45, "Print"],
+Cell[101033, 3032, 211, 5, 45, "Print"],
+Cell[101247, 3039, 236, 6, 45, "Print"],
+Cell[101486, 3047, 274, 8, 45, "Print"],
+Cell[101763, 3057, 252, 7, 45, "Print"],
+Cell[102018, 3066, 285, 8, 45, "Print"],
+Cell[102306, 3076, 267, 7, 45, "Print"],
+Cell[102576, 3085, 524, 15, 57, "Print"],
+Cell[103103, 3102, 669, 19, 57, "Print"],
+Cell[103775, 3123, 836, 23, 57, "Print"],
+Cell[104614, 3148, 1041, 28, 108, "Print"],
+Cell[105658, 3178, 1056, 27, 113, "Print"],
+Cell[106717, 3207, 1199, 30, 133, "Print"],
+Cell[107919, 3239, 1215, 30, 133, "Print"],
+Cell[109137, 3271, 1096, 32, 87, "Print"],
+Cell[110236, 3305, 8234, 235, 453, "Print"],
+Cell[118473, 3542, 205, 5, 45, "Print"],
+Cell[118681, 3549, 213, 5, 45, "Print"],
+Cell[118897, 3556, 242, 7, 45, "Print"],
+Cell[119142, 3565, 280, 8, 45, "Print"],
+Cell[119425, 3575, 288, 8, 45, "Print"],
+Cell[119716, 3585, 292, 8, 45, "Print"],
+Cell[120011, 3595, 283, 7, 45, "Print"],
+Cell[120297, 3604, 550, 16, 85, "Print"],
+Cell[120850, 3622, 702, 20, 85, "Print"],
+Cell[121555, 3644, 861, 24, 127, "Print"],
+Cell[122419, 3670, 1024, 28, 127, "Print"],
+Cell[123446, 3700, 1058, 27, 92, "Print"],
+Cell[124507, 3729, 1203, 30, 113, "Print"],
+Cell[125713, 3761, 1360, 33, 133, "Print"],
+Cell[127076, 3796, 1375, 33, 133, "Print"],
+Cell[128454, 3831, 1172, 34, 87, "Print"],
+Cell[129629, 3867, 9426, 267, 485, "Print"],
+Cell[139058, 4136, 206, 5, 45, "Print"],
+Cell[139267, 4143, 215, 5, 45, "Print"],
+Cell[139485, 4150, 247, 7, 45, "Print"],
+Cell[139735, 4159, 256, 7, 45, "Print"],
+Cell[139994, 4168, 291, 8, 45, "Print"],
+Cell[140288, 4178, 299, 8, 45, "Print"],
+Cell[140590, 4188, 287, 8, 45, "Print"],
+Cell[140880, 4198, 319, 9, 68, "Print"],
+Cell[141202, 4209, 557, 16, 85, "Print"],
+Cell[141762, 4227, 713, 20, 85, "Print"],
+Cell[142478, 4249, 866, 24, 85, "Print"],
+Cell[143347, 4275, 931, 24, 92, "Print"],
+Cell[144281, 4301, 1073, 27, 92, "Print"],
+Cell[145357, 4330, 1211, 30, 113, "Print"],
+Cell[146571, 4362, 1369, 33, 133, "Print"],
+Cell[147943, 4397, 1390, 33, 133, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
