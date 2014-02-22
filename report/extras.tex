@@ -1,0 +1,32 @@
+\section{Приложения}
+
+\subsection{Исходный код программы для вычисления определителей матриц Гурвица на языке Wolfram Mathematica}
+
+\begin{lstlisting}[frame = single, language = Mathematica]
+mMax := 10;
+HurwitzMatrix[\[Tau]_, degree_] := 
+ Module[{coefList, k, i, j, l, matrix, pivotalIndex, index},
+  coefList = {\[Gamma]};
+  For[k = 0, k < degree + 1, k++, 
+   PrependTo[coefList, (\[Tau]^k)/Factorial[k]]];
+  (*Print[coefList];*)
+  matrix = ConstantArray[0, {degree + 1, degree + 1}];
+  For[i = 1, i <= degree + 1, i++,
+   pivotalIndex = 2*i;
+   For[j = 1, j <= degree + 1, j++,
+    index = pivotalIndex + 1 - j;
+    If[(index > degree + 2) || (index < 1),
+     Continue[],
+     matrix[[i, j]] = coefList[[index]]
+     ]
+    ]
+   ];
+  (*Print[matrix//MatrixForm];*)
+  For[l = 1, l <= m + 1, l++,
+   Print[Simplify[N[Det[matrix[[1 ;; l, 1 ;; l]]]]]];
+   ];
+  Print[]
+  ]
+For[m = 1, m <= mMax, m++,
+ HurwitzMatrix[\[Tau], m]]
+\end{lstlisting}
