@@ -1,0 +1,105 @@
+\documentclass[a4paper, 12pt]{extarticle}
+
+% PDF search & cut'n'paste
+\usepackage{cmap}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8] {inputenc}
+\usepackage[english, russian] {babel}
+\usepackage{indentfirst}
+
+% Better sans-serif fonts
+\usepackage{pscyr}
+\renewcommand{\rmdefault}{cmr}
+\renewcommand{\sfdefault}{ftx}
+\renewcommand{\ttdefault}{cmtt}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{enumerate}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\usepackage{geometry}
+\geometry{left=1.5cm}
+\geometry{right=3cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+% According to GOST, sections should be called chapters in diploma
+\usepackage{titlesec}
+
+\setcounter{tocdepth}{2}
+
+\titleformat{\section}[block]{\bfseries\large\sffamily\raggedright}
+        {Глава~\Roman{section}.}{1ex}{}
+\titleformat{\subsection}[block]{\bfseries\normalsize\sffamily\raggedright}
+        {\arabic{section}.\arabic{subsection}.}{1ex}{}
+\titleformat{\subsubsection}[block]{\normalsize\sffamily\raggedright}
+        {\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}{1ex}{}
+
+\titlespacing*{\section}      {0pt}{3.50ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsection}   {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\usepackage[titles]{tocloft}
+
+\renewcommand{\cftsecpresnum}{Глава~}
+\renewcommand{\cftsecleader}{\bfseries\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+
+\newlength{\zyvseclen}
+\settowidth{\zyvseclen}{\bfseries\cftsecpresnum\cftsecaftersnum}
+\addtolength{\zyvseclen}{2mm}
+\addtolength{\cftsecnumwidth}{\zyvseclen}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}
+        {\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+% Page numbering at the right topmost part of the page
+\pagestyle{myheadings}
+
+% [1] -> 1. in the bibliography
+\makeatletter
+\renewcommand\@biblabel[1]{#1.}
+\makeatother
+
+% Here we define the relationships for the counters: normaly we should
+% reset the eq, figure & table counters every chapter
+\makeatletter
+\@addtoreset{equation}{section} % Equation counter
+\@addtoreset{figure}{section} % Figure counter
+\@addtoreset{table}{section} % Table counter
+\makeatother
+
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+
+% Allow landscape pages for graphics, call like:
+%
+%       \afterpage{\clearpage
+%       \begin{landscape}
+%       \begin{figure}[p]
+%       ...
+%       \end{figure}
+%       \end{landscape}
+%       }
+\usepackage{pdflscape}
+
+% Provides support for setting the spacing between lines in a document. Package
+% options include singlespacing, onehalfspacing, and doublespacing.
+% http://www.ctan.org/tex-archive/macros/ ... /setspace/
+\usepackage{setspace}
+
+% This declaration makes TeX less fussy about line breaking. This can
+% prevent overfull boxes, but may leave too much space between words.
+% As this really isn't a fine art typography, we'll turn it on, so
+% we won't have paragraphs which spans on the margins...
+\sloppy
