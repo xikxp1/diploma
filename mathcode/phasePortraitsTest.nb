@@ -1,0 +1,359 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     13543,        349]
+NotebookOptionsPosition[     12886,        321]
+NotebookOutlinePosition[     13228,        336]
+CellTagsIndexPosition[     13185,        333]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"StreamPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"t", "^", "2"}], "/", "\[Epsilon]"}], "-", 
+        RowBox[{"x", "/", "\[Epsilon]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "0.1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"StreamColorFunction", "\[Rule]", "\"\<Rainbow\>\""}]}], "]"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Epsilon]", ",", "0.01"}], "}"}], ",", "0", ",", "0.01"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.604936471933053*^9, 3.6049366397506514`*^9}, {
+  3.604936695720853*^9, 3.6049367001271048`*^9}, {3.6049367574873857`*^9, 
+  3.604936768687026*^9}, {3.6049370065036287`*^9, 3.6049371060073195`*^9}, {
+  3.6049371482327347`*^9, 3.60493714884077*^9}, {3.60493717961653*^9, 
+  3.604937180816599*^9}, {3.604937268136593*^9, 3.604937307521846*^9}, {
+  3.604937654834711*^9, 3.604937681449233*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Epsilon]$$ = 0.01, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Epsilon]$$], 0.01}, 0, 0.01}}, Typeset`size$$ = {
+    360., {177., 182.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Epsilon]$164161$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`\[Epsilon]$$ = 0.01}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`\[Epsilon]$$, $CellContext`\[Epsilon]$164161$$, 0]},
+       "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      StreamPlot[{
+        1, $CellContext`t^2/$CellContext`\[Epsilon]$$ - \
+$CellContext`x/$CellContext`\[Epsilon]$$}, {$CellContext`t, -1, 
+         1}, {$CellContext`x, -0.1, 1}, StreamColorFunction -> "Rainbow"], 
+      "Specifications" :> {{{$CellContext`\[Epsilon]$$, 0.01}, 0, 0.01}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {224., 229.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.6049367474058084`*^9, 3.6049367698520927`*^9}, {
+   3.6049370904394293`*^9, 3.6049371073703976`*^9}, {3.604937159894402*^9, 
+   3.6049371823346853`*^9}, 3.604937278273173*^9, 3.6049373095509615`*^9, {
+   3.6049376614020863`*^9, 3.6049376860534964`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"VectorPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"t", "^", "2"}], "/", "\[Epsilon]"}], "-", 
+        RowBox[{"x", "/", "\[Epsilon]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "0.1"}], ",", "1"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Epsilon]", ",", "0.01"}], "}"}], ",", "0", ",", "1"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.604938016449394*^9, 3.604938029393134*^9}, {
+  3.604938309561159*^9, 3.604938310544215*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Epsilon]$$ = 0.004, Typeset`show$$ = True,
+     Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Epsilon]$$], 0.01}, 0, 1}}, Typeset`size$$ = {
+    360., {174., 178.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Epsilon]$183325$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`\[Epsilon]$$ = 0.01}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`\[Epsilon]$$, $CellContext`\[Epsilon]$183325$$, 0]},
+       "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      VectorPlot[{
+        1, $CellContext`t^2/$CellContext`\[Epsilon]$$ - \
+$CellContext`x/$CellContext`\[Epsilon]$$}, {$CellContext`t, -1, 
+         1}, {$CellContext`x, -0.1, 1}], 
+      "Specifications" :> {{{$CellContext`\[Epsilon]$$, 0.01}, 0, 1}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {220., 225.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.60493801095208*^9, 3.6049380301251764`*^9}, 
+   3.604938314862462*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"VectorPlot3D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "S", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "S"}], "/", "\[Tau]"}], "-", 
+        RowBox[{"\[Gamma]", "*", 
+         RowBox[{"T", "/", "\[Tau]"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"T", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"S", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]", ",", "0.01"}], "}"}], ",", "0", ",", "1"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Gamma]", ",", "0.01"}], "}"}], ",", "0", ",", "10"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.604938066097234*^9, 3.6049380883125043`*^9}, {
+  3.604938135953229*^9, 3.6049381987778225`*^9}, {3.6049382784173775`*^9, 
+  3.604938443866841*^9}, {3.6049384743725853`*^9, 3.604938479801896*^9}, {
+  3.6049386294374547`*^9, 3.6049386295864635`*^9}, {3.604938677570208*^9, 
+  3.604938694698188*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Gamma]$$ = 0.01, $CellContext`\[Tau]$$ = 
+    0.01, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$, 
+    Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Tau]$$], 0.01}, 0, 1}, {{
+       Hold[$CellContext`\[Gamma]$$], 0.01}, 0, 10}}, Typeset`size$$ = {
+    350., {164., 168.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Tau]$205107$$ = 
+    0, $CellContext`\[Gamma]$205108$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Gamma]$$ = 0.01, $CellContext`\[Tau]$$ = 
+        0.01}, "ControllerVariables" :> {
+        Hold[$CellContext`\[Tau]$$, $CellContext`\[Tau]$205107$$, 0], 
+        Hold[$CellContext`\[Gamma]$$, $CellContext`\[Gamma]$205108$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      VectorPlot3D[{
+        1, $CellContext`S, (-$CellContext`S)/$CellContext`\[Tau]$$ - \
+$CellContext`\[Gamma]$$ ($CellContext`T/$CellContext`\[Tau]$$)}, \
+{$CellContext`t, -1, 1}, {$CellContext`T, -1, 1}, {$CellContext`S, -1, 1}], 
+      "Specifications" :> {{{$CellContext`\[Tau]$$, 0.01}, 0, 
+         1}, {{$CellContext`\[Gamma]$$, 0.01}, 0, 10}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{401., {224., 229.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.604938370484644*^9, 3.6049383896247387`*^9}, {
+   3.6049384351023397`*^9, 3.6049384460939684`*^9}, 3.6049384823270407`*^9, 
+   3.6049386313635654`*^9, 3.604938695859254*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"StreamPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"S", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "S"}], "/", "\[Tau]"}], "-", 
+        RowBox[{"\[Gamma]", "*", 
+         RowBox[{"T", "/", "\[Tau]"}]}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"T", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"S", ",", 
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"StreamColorFunction", "\[Rule]", "\"\<Rainbow\>\""}]}], "]"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]", ",", "0.01"}], "}"}], ",", "0", ",", "1"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Gamma]", ",", "0.01"}], "}"}], ",", "0", ",", "10"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.604938741889887*^9, 3.604938874255458*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Gamma]$$ = 0.62, $CellContext`\[Tau]$$ = 
+    0.052000000000000005`, Typeset`show$$ = True, Typeset`bookmarkList$$ = {},
+     Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Tau]$$], 0.01}, 0, 1}, {{
+       Hold[$CellContext`\[Gamma]$$], 0.01}, 0, 10}}, Typeset`size$$ = {
+    360., {174., 178.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Tau]$260028$$ = 
+    0, $CellContext`\[Gamma]$260029$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Gamma]$$ = 0.01, $CellContext`\[Tau]$$ = 
+        0.01}, "ControllerVariables" :> {
+        Hold[$CellContext`\[Tau]$$, $CellContext`\[Tau]$260028$$, 0], 
+        Hold[$CellContext`\[Gamma]$$, $CellContext`\[Gamma]$260029$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      StreamPlot[{$CellContext`S, (-$CellContext`S)/$CellContext`\[Tau]$$ - \
+$CellContext`\[Gamma]$$ ($CellContext`T/$CellContext`\[Tau]$$)}, \
+{$CellContext`T, -1, 1}, {$CellContext`S, -1, 1}, StreamColorFunction -> 
+        "Rainbow"], 
+      "Specifications" :> {{{$CellContext`\[Tau]$$, 0.01}, 0, 
+         1}, {{$CellContext`\[Gamma]$$, 0.01}, 0, 10}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {234., 239.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.6049388149610662`*^9, 3.6049388763395767`*^9}]
+}, Open  ]]
+},
+WindowSize->{707, 761},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 1143, 29, 52, "Input"],
+Cell[1725, 53, 2003, 38, 470, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3765, 96, 764, 23, 52, "Input"],
+Cell[4532, 121, 1781, 36, 462, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6350, 162, 1232, 35, 52, "Input"],
+Cell[7585, 199, 2200, 42, 470, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9822, 246, 948, 30, 52, "Input"],
+Cell[10773, 278, 2097, 40, 490, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

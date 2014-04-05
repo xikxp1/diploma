@@ -1,0 +1,241 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8340,        231]
+NotebookOptionsPosition[      7945,        213]
+NotebookOutlinePosition[      8287,        228]
+CellTagsIndexPosition[      8244,        225]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"splot", "=", 
+   RowBox[{"StreamPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "x"}], "/", "\[Tau]"}], "-", 
+        RowBox[{"y", "*", 
+         RowBox[{"\[Gamma]", "/", "\[Tau]"}]}]}], ",", "x"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
+     RowBox[{"StreamColorFunction", "\[Rule]", "\"\<Rainbow\>\""}]}], "]"}]}],
+   ";"}], "\n", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Show", "[", 
+    RowBox[{"splot", ",", 
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{"Evaluate", "[", 
+        RowBox[{"First", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"x", "[", "t", "]"}], ",", 
+            RowBox[{"y", "[", "t", "]"}]}], "}"}], "/.", 
+          RowBox[{"NDSolve", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"x", "'"}], "[", "t", "]"}], "\[Equal]", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", 
+                  RowBox[{"x", "[", "t", "]"}]}], "/", "\[Tau]"}], "-", 
+                RowBox[{
+                 RowBox[{"y", "[", "t", "]"}], "*", 
+                 RowBox[{"\[Gamma]", "/", "\[Tau]"}]}]}]}], ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"y", "'"}], "[", "t", "]"}], "\[Equal]", 
+               RowBox[{"x", "[", "t", "]"}]}], ",", 
+              RowBox[{"Thread", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"x", "[", "0", "]"}], ",", 
+                  RowBox[{"y", "[", "0", "]"}]}], "}"}], "\[Equal]", 
+                "point"}], "]"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"x", ",", "y"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"t", ",", "0", ",", "T"}], "}"}]}], "]"}]}], "]"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "T"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", "Red"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"T", ",", "20"}], "}"}], ",", "1", ",", "350"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"point", ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "0"}], "}"}]}], "}"}], ",", "Locator"}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6046670654466734`*^9, 3.6046670654506736`*^9}, 
+   3.6046671669334784`*^9, {3.60466720262352*^9, 3.604667202942538*^9}, {
+   3.6046672891674695`*^9, 3.6046673718621993`*^9}, {3.6046674354568367`*^9, 
+   3.604667460286257*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"splot", "=", 
+   RowBox[{"StreamPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "x"}], "/", "\[Tau]"}], "-", 
+        RowBox[{"y", "*", 
+         RowBox[{"\[Gamma]", "/", "\[Tau]"}]}]}], ",", "x"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
+     RowBox[{"StreamColorFunction", "\[Rule]", "\"\<Rainbow\>\""}]}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Show", "[", "splot", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Tau]", ",", "1"}], "}"}], ",", 
+     RowBox[{"10", "^", 
+      RowBox[{"-", "10"}]}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Gamma]", ",", "1"}], "}"}], ",", "1", ",", 
+     RowBox[{"10", "^", "10"}]}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.604667526393038*^9, 3.604667604161486*^9}, {
+  3.604667819153783*^9, 3.6046678370738077`*^9}, {3.604667903594613*^9, 
+  3.6046679273299704`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"s1", "=", 
+   RowBox[{"StreamPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "x"}], "/", "0.01"}], "-", 
+        RowBox[{"y", "*", 
+         RowBox[{"100", "/", "0.01"}]}]}], ",", "x"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "0.01"}], ",", "0.01"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "0.0001"}], ",", "0.0001"}], "}"}], ",", 
+     RowBox[{"StreamColorFunction", "\[Rule]", "\"\<Rainbow\>\""}]}], "]"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", "s1", "]"}]}], "Input",
+ CellChangeTimes->{{3.6046679537684827`*^9, 3.6046679768158007`*^9}, {
+  3.604668102089966*^9, 3.6046682409859104`*^9}, {3.604668339778561*^9, 
+  3.6046683829700317`*^9}, {3.604669318731554*^9, 3.6046693696344657`*^9}, {
+  3.6046695405792427`*^9, 3.6046695563791466`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, GraphicsComplexBox[CompressedData["
+1:eJxdk3s01GkYxydl3TJtuZVrTtEMFo2yOHgzHOUu5LJZHCKX3CaNcTduORmX
+Q0K2dexQbusWxnJ446yU2lUdhbJGba3E2RK5TC77Pnt2/+mPOXM+5/v7Ps/z
+fd731QyMdgsWo1AoPuQH/6l/FMQZqWZjvaMznlsCM/wFo/8YfaH/z+iXnggb
++D7s2UeJCn1F5CmM9gVdWL/iEE/YqabYSFE5Cx9eiJdfIf5bdUo1wK2BXd4i
+4v+zjP7NulIm1k0pFK0S/Y1uIQfYMOZBB+i3hljaUwoZWOp49MoG0d93238H
+7KzJHCSMXqZYbfXLcXGfr9l5qO+lYmiIgX1m6teILvv4zFz13nRsxSi584no
+qtEj9J8IP33b3Q1+Gk/IkdJIxVyrg0zwm8pTraUJ1zNiFSCfir69x6hyMrY0
+CtUi9bD7nljaI8InuRaK60Qv7aUzShUTcWGK5BaZF6cccNa8RrjvxoQT9I9y
+iZQ8u4+Dc67kjYJ+xl+yDHiJIZAm/VDh9vIJTSobx0SF+EP9KhXzeuDPr13D
+of7AOhX/JRWHEybsLGA/ZbkLjbOEXzvmbpM8qPn6h+wmcRYuaB43A/3Kop34
+z4STLtXXQv3pm/ucWDtisEuOjAfoIbNPZoF331+ygflcGb30WFEE9py/sBv6
+r+dWrwNzWhKCQZ91mJrZWDyPY9vaDTaJ7pfV9G6TMC9G0ecz0V8tUIYvzwXh
+oUhuP+jXOmtGcwnf7KjWgf3dUxVv0R70x08/5miBzjXQ3qYRvqR8MRj8Bjnq
++pZtXjjgbbECyYtj292OMgn/UG64RuZFjs/dixtPuOCBiqBxmF8muSWhlXBE
+RJMnnN9UL934toUltu75rRb8X0VN5vcR5uddfQ73p1NAd3A1oKBqdtUrOF+7
+tIeBWoR5h851Qj5poZ/J3cNWqDIwthbOh5/2mP0r4V6dY3ehfjdd3dyJ74pO
+JwRIwfztG6lv7AgrCdwVwG/L79U43uGNhI2+ueCXaNYbP0rYPIvnuAnn22Jl
+VhgYgMZOPRKCP7Gd1pFPeNooeRPyPbxf7rcz4hyqilC/DPPrHBCpiRGeqLBh
+QX17jYZF9sVQdETepAHyr3matgIbHOJkQ77d/LS2+aQL6LaSQynUV9uYM31H
+ePFbl3bYb8l7jq0hMwat7hLbQxjrG+9gGRCW22Jvw/3oqiymhduy0B1N1TF4
+H1TF9BdhhFM0xF+CXyZvjFVjH4ceVBnZwftr5e5/wSc83LPMgPv541iJx7Qz
+G8mzqQLY77OiOj1gmRHqEchna01P3+/OQVdrjPKg/+TIiiqwS6j0CNQ/3aVd
+6+aViHhVOm6Qb7Eo3AdYwjlNDPLfS/ybmn82GX2QzdkJ/ePnKF48wibK7BbY
+L+X7etlh/1Q0yCwLAX9+ZHv2XcJL0cpFcH7CJ18LKIx05PTOZwt0+QK6P/Dm
+keEh0OnlJ+vUjnGRY8v6adhfZcY9L2BpqUkW6H4N6QNmxhkIaZoHwvy0zNEk
+YC7H+9/3tyrBFHmZZKJPCWWV4C8Mun4DOChKpArzLYfunY8zy0JhTA6C99XX
+xRkBNnnyuwjqUyi6QoFcZN8uep2jrMTB/n8AWejCZA==
+    "], {}]},
+  AspectRatio->1,
+  Frame->True,
+  Method->{"TransparentPolygonMesh" -> True},
+  PlotRange->{{-0.01030769538361542, 
+   0.01030769538361542}, {-0.0004076953836154192, 0.0004076953836154192}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ CellChangeTimes->{{3.6046681122595477`*^9, 3.6046681703758717`*^9}, {
+   3.604668203814784*^9, 3.6046682427140093`*^9}, {3.6046683445118318`*^9, 
+   3.6046683841410985`*^9}, {3.6046693225957747`*^9, 3.6046693706295223`*^9}, 
+   3.6046695582622547`*^9}]
+}, Open  ]]
+},
+WindowSize->{707, 761},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 2919, 80, 232, "Input"],
+Cell[3479, 102, 1221, 36, 72, "Input"],
+Cell[CellGroupData[{
+Cell[4725, 142, 942, 24, 72, "Input"],
+Cell[5670, 168, 2259, 42, 352, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

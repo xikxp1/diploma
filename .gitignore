@@ -6,3 +6,6 @@
 *.gz
 *.eps
 *.toc
+*.snm
+*.nav
+*.out
