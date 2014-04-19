@@ -3,10 +3,24 @@
 \usepackage[english,russian]{babel}
 \usepackage[utf8]{inputenc}
 
+\usepackage{amsmath}
+\numberwithin{equation}{section}
+
+\usepackage{graphicx}
+\usepackage{epstopdf} 
+
 \usetheme{Warsaw}
 \usecolortheme{beaver}
 \useoutertheme{miniframes}
 \setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{headline}
+{%\
+    \begin{beamercolorbox}[ht=2.25ex,dp=1.1ex]{section in head/foot}
+        \insertsectionnavigationhorizontal{\paperwidth}{}{\hfill\hfill}
+    \end{beamercolorbox}%
+}
+
 \setbeamertemplate{footline}
 {%\
     \begin{beamercolorbox}{section in head/foot}
@@ -15,9 +29,17 @@
 }
 
 \begin{document}
+    
     \title{Особенности математических моделей теплопроводности с отклоняющимся аргументом}
+    
     \author{Качалкин Иван}
-    \institute{Московский государственный университет путей сообщения (МИИТ)\\Кафедра ``Прикладная математика-1''}
+    
+    \institute{Московский государственный университет путей сообщения (МИИТ)\\Кафедра ``Прикладная математика-1''\\
+        \vspace{0.7cm}
+        Научный руковдитель: профессор, д.ф.-м.н. Филимонов А.М.
+        \vspace{0.7cm}
+    }
+    
     \date{апрель 2014}
 
     {
@@ -26,16 +48,120 @@
         \frame{\titlepage}
     }
 
-    \section{тест}
+    \section{Постановка задачи}
+    \subsection{Математическая модель задачи}
     \begin{frame}
-    1
+        \frametitle{Постановка задачи}
+        \framesubtitle{Исходные уравнения}
+
+        \textbf{Общее уравнение непрерывности} в дифференциальной форме:
+
+        \begin{equation}
+            \rho_t + div \bar{J} = f \text{,}
+        \end{equation}
+
+        где \textbf{плотность потока} выражена законом диффузии с конвекцией:
+
+        \begin{equation}
+            \bar{J}(x,t) = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
+        \end{equation}
+
     \end{frame}
 
-    \section{еусе2 azaaaaaza}
+    \subsection{Уравненение диффузии с запаздыванием}
     \begin{frame}
-    \frametitle{This is the second slide}
-    \framesubtitle{A bit more information about this}
-    %More content goes here
+        \frametitle{Постановка задачи}
+        \framesubtitle{Уравненение диффузии с запаздыванием}
+
+        Рассмотрим возмущенную систему, где $\tau$ \--- малый параметр:
+
+        \begin{equation}
+            \bar{J}(x,t+\tau) = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
+        \end{equation}
+
+        \begin{equation}
+            \sum\limits_{k=0}^{m} \dfrac{\partial^k \bar{J}}{\partial t^k}(x,t) \dfrac{\tau^k}{k!} = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
+        \end{equation}
+
+        \begin{equation}
+            \sum\limits_{k=0}^{m} \dfrac{\partial^{k+1} u}{\partial t^{k+1}} \dfrac{\tau^k}{k!} - a^2 \dfrac{\partial^2 u}{\partial x^2} + \dfrac{V^2}{4a^2} u = 0
+        \end{equation}
+
     \end{frame}
-% etc
+
+    \section{Исследование устойчивости решений}
+    \subsection{Сведение к исследованию ОДУ методом Фурье и исследование его усточивости по критерию Рауса-Гурвица}
+    \begin{frame}
+        \frametitle{Исследование устойчивости решений}
+        \framesubtitle{Сведение к исследованию ОДУ методом Фурье и исследование его усточивости по критерию Рауса-Гурвица}
+
+        \begin{equation}
+            \left\{
+            \begin{aligned}
+                \sum\limits_{k=0}^{m} \dfrac{\tau^k}{k!} T^{(k+1)} + \underbrace{ \left( \dfrac{V^2}{4a^2} + a^2 k^2 \right)}_{\gamma(k)} T & = 0\\
+                X'' + k^2 X & = 0
+            \end{aligned}
+            \right.
+        \end{equation}
+
+        \begin{equation}
+            \sum\limits_{k=0}^{m} \dfrac{\tau^k}{k!} \lambda^{k+1} + {\gamma} = 0
+        \end{equation}
+
+    \end{frame}
+
+    \subsection{Результаты численного исследования}
+    \begin{frame}
+        \frametitle{Исследование устойчивости решений}
+        \framesubtitle{Результаты численного исследования}
+
+        \begin{small}
+
+        \textbf{при $m=1$}: $T_1 = 1 > 0$, $T_1 = \gamma > 0$\\
+
+        \textbf{при $m=2$}: $T_1 = \tau$, $T_2 = \tau (1 - 0.5 \gamma \tau) < 0$, $T_3 = \gamma \tau (1 - 0.5 \gamma \tau) < 0$\\
+
+        \textbf{при $m=3$}: $T_1 = 0.5 \tau ^2$, $T_2 \approx 0.33 \tau ^3$, $T_3 \approx \tau ^3 (0.33\, -0.25 \gamma  \tau ) < 0$, $T_4 \approx \gamma  \tau ^3 (0.33\, -0.25 \gamma  \tau ) < 0$\\
+
+        \textbf{при $m=4$}: $T_1 = 0.167 \tau ^3$, $T_2 = 0.041 \tau ^5$, $T_3 = \tau ^6 (0.007 \gamma  \tau + 0.014)$, \\$T_4 = \tau ^6 \left(-0.0017 \gamma ^2 \tau ^2-0.007 \gamma  \tau +0.014\right) < 0$, $T_5 = \gamma  \tau ^6 \left(-0.0017 \gamma ^2 \tau ^2-0.0071 \gamma  \tau +0.0139 \right)$\\
+
+        \textbf{при $m=5$}: $T_1 = 0.042 \tau ^4$, $T_2 = 0.003 \tau ^7$, $T_3 = 0$, $T_4 = \tau ^{10} (0.0001 \gamma  \tau -0.0002)$, $T_5 = \tau ^{10} \left(-0.0001 \gamma ^2 \tau ^2+0.0002 \gamma  \tau -0.0002\right) < 0$, \dots\\
+
+        \textbf{при $m=6$}: $T_1 = 0.0083 \tau ^5$, $T_2 = 0.0001 \tau ^9$, $T_3 = -3.858^{-6} \tau ^{12} < 0$, \dots\\
+
+        \textbf{при $m=7$}: $T_1 = 0.00138889 \tau ^6$, $T_2 = 3.307^{-6} \tau ^{11}$, $T_3 = -4.593^{-8} \tau ^{15} < 0$, \dots\\
+
+        \end{small}
+
+    \end{frame}
+
+    \subsection{Аналитическое доказательство неустойчисовсти решений}
+    \begin{frame}
+        \frametitle{Исследование устойчивости решений}
+        \framesubtitle{Аналитическое доказательство неустойчисовсти решений}
+
+        \textbf{Утверждение}. $T_3 < 0$ при $m \geq 6$.
+
+        \begin{equation}
+            T_3 = 
+            \begin{vmatrix}
+                \frac{\tau^{m-1}}{(m-1)!} & \frac{\tau^{m}}{m!} & 0\\
+                \frac{\tau^{m-3}}{(m-3)!} & \frac{\tau^{m-2}}{(m-2)!} & \frac{\tau^{m-1}}{(m-1)!}\\
+                \frac{\tau^{m-5}}{(m-5)!} & \frac{\tau^{m-4}}{(m-4)!} & \frac{\tau^{m-3}}{(m-3)!}
+            \end{vmatrix} =
+            \dfrac{\tau^{3m-6}}{m!(m-1)!(m-3)!} (10-2m) < 0
+        \end{equation}
+
+        \begin{center}
+            \includegraphics[width=0.65\textwidth]{coefCheck.eps}
+        \end{center}
+    
+    \end{frame}
+
+    \section{Исследование первого приближения}
+    \begin{frame}
+        \frametitle{Исследование первого приближения}
+        
+    \end{frame}
+
 \end{document}
