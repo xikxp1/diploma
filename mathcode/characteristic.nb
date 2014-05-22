@@ -1,0 +1,185 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5754,        176]
+NotebookOptionsPosition[      5249,        154]
+NotebookOutlinePosition[      5591,        169]
+CellTagsIndexPosition[      5548,        166]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$Assumptions", "=", 
+   RowBox[{
+    RowBox[{"a", ">", "0"}], "&&", 
+    RowBox[{"a", "\[Element]", "Reals"}], "&&", 
+    RowBox[{"v", ">", "0"}], "&&", 
+    RowBox[{"v", "\[Element]", "Reals"}], "&&", 
+    RowBox[{"k", ">", "0"}], "&&", 
+    RowBox[{"k", "\[Element]", "Integers"}], "&&", 
+    RowBox[{"\[Tau]", ">", "0"}], "&&", 
+    RowBox[{"\[Tau]", "\[Element]", "Reals"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"\[Lambda]", "[", "k", "]"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"\[Lambda]", "[", "k", "]"}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"v", "^", "2"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"4", "*", 
+         RowBox[{"a", "^", "2"}]}], ")"}]}], "+", 
+      RowBox[{
+       RowBox[{"a", "^", "2"}], "*", 
+       RowBox[{"k", "^", "2"}]}]}], ")"}], "*", 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", "\[Tau]"}], "*", 
+      RowBox[{"\[Lambda]", "[", "k", "]"}]}], 
+     "]"}]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Reduce", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"\[Lambda]", "[", "k", "]"}], "]"}], "\[Equal]", "0"}], ",", 
+    RowBox[{"\[Lambda]", "[", "k", "]"}]}], "]"}], "//", 
+  "FullSimplify"}]}], "Input",
+ CellChangeTimes->{{3.6094785735505514`*^9, 3.6094786978516607`*^9}, {
+  3.609478739853063*^9, 3.609478741141137*^9}, {3.609478985838133*^9, 
+  3.6094790158948517`*^9}, {3.6094790674398003`*^9, 3.6094791169636326`*^9}, {
+  3.6094791933119993`*^9, 3.609479243536872*^9}, {3.6094793992177763`*^9, 
+  3.6094794162437506`*^9}, {3.609479477097231*^9, 3.6094794882248673`*^9}, {
+  3.609480431144799*^9, 3.609480493369358*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"C", "[", "1", "]"}], "\[Element]", "Integers"}], "&&", 
+  RowBox[{
+   RowBox[{"ProductLog", "[", 
+    RowBox[{
+     RowBox[{"C", "[", "1", "]"}], ",", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"4", " ", 
+           SuperscriptBox["a", "4"], " ", 
+           SuperscriptBox["k", "2"]}], "+", 
+          SuperscriptBox["v", "2"]}], ")"}], " ", "\[Tau]"}], 
+       RowBox[{"4", " ", 
+        SuperscriptBox["a", "2"]}]]}]}], "]"}], "\[Equal]", 
+   RowBox[{"\[Tau]", " ", 
+    RowBox[{"\[Lambda]", "[", "k", "]"}]}]}]}]], "Output",
+ CellChangeTimes->{{3.6094787272723436`*^9, 3.6094787431962543`*^9}, 
+   3.609479119875799*^9, 3.609479247256085*^9, 3.609479417918846*^9, 
+   3.6094794890819163`*^9, 3.609480496337528*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FindRoot", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"\[Lambda]", "[", "k", "]"}], "]"}], "\[Equal]", "0"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\[Lambda]", "[", "k", "]"}], ",", "1"}], "}"}]}], "]"}], "//", 
+  "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.609480601252529*^9, 3.6094806131032066`*^9}, {
+  3.6094859550677495`*^9, 3.6094859614551153`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "nlnum"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The function value \[NoBreak]\\!\\({\\(f[1.`]\\)}\\)\
+\[NoBreak] is not a list of numbers with dimensions \[NoBreak]\\!\\({1}\\)\
+\[NoBreak] at \[NoBreak]\\!\\({\\(\[Lambda][k]\\)}\\)\[NoBreak] = \
+\[NoBreak]\\!\\({1.`}\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\
+\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/FindRoot\\\", ButtonNote -> \
+\\\"FindRoot::nlnum\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6094806138692503`*^9, 3.6094859621821566`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindRoot", "::", "nlnum"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The function value \[NoBreak]\\!\\({\\(f[1.`]\\)}\\)\
+\[NoBreak] is not a list of numbers with dimensions \[NoBreak]\\!\\({1}\\)\
+\[NoBreak] at \[NoBreak]\\!\\({\\(\[Lambda][k]\\)}\\)\[NoBreak] = \
+\[NoBreak]\\!\\({1.`}\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\
+\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/FindRoot\\\", ButtonNote -> \
+\\\"FindRoot::nlnum\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6094806138692503`*^9, 3.6094859622521605`*^9}],
+
+Cell[BoxData[
+ RowBox[{"FindRoot", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"\[Lambda]", "[", "k", "]"}], "]"}], "\[Equal]", "0"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[Lambda]", "[", "k", "]"}], ",", "1"}], "}"}]}], 
+  "]"}]], "Output",
+ CellChangeTimes->{3.609480613871251*^9, 3.609485962255161*^9}]
+}, Open  ]]
+},
+WindowSize->{707, 761},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 1730, 47, 92, "Input"],
+Cell[2312, 71, 835, 23, 53, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3184, 99, 438, 12, 31, "Input"],
+Cell[3625, 113, 631, 12, 21, "Message"],
+Cell[4259, 127, 631, 12, 21, "Message"],
+Cell[4893, 141, 340, 10, 63, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
