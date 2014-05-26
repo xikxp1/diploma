@@ -1,0 +1,124 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4456,        114]
+NotebookOptionsPosition[      4222,        101]
+NotebookOutlinePosition[      4557,        116]
+CellTagsIndexPosition[      4514,        113]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MethodofStepsAlgorithm", "[", 
+   RowBox[{"{", 
+    RowBox[{
+    "eqDelay_", ",", "initialFunction_", ",", "function_", ",", "argValues_", 
+     ",", "solveTimeAllowed_"}], "}"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "useDSolve", ",", "currentStep", ",", "argument", ",", "initialArgValue",
+       ",", "currentArgValue", ",", "finalArgValue", ",", "delay", ",", 
+      "currentFunction", ",", "previousFunction", ",", "eqCurrent", ",", 
+      "eqPrevious"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"useDSolve", ":=", "True"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"currentStep", ":=", "0"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"argument", ":=", 
+      RowBox[{"argValues", "[", "0", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"initialArgValue", ":=", 
+      RowBox[{"argValues", "[", "1", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"currentArgValue", ":=", "initialArgValue"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"finalArgValue", ":=", 
+      RowBox[{"argValues", "[", "2", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"delay", ":=", 
+      RowBox[{"argValues", "[", "3", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"previousFunction", "[", "argument", "]"}], ":=", 
+      RowBox[{"initialFunction", "[", "argument", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"currentArgValue", "\[LessEqual]", "finalArgValue"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"currentStep", "+=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"eqCurrent", ":=", 
+         RowBox[{"eqDelay", "/.", 
+          RowBox[{
+           RowBox[{"function", "[", 
+            RowBox[{"argument", "-", "delay"}], "]"}], "\[Rule]", 
+           RowBox[{"previousFunction", "[", 
+            RowBox[{"argument", "-", "delay"}], "]"}]}]}]}]}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{"useDSolve", ",", "\[IndentingNewLine]", 
+       RowBox[{"TimeConstrained", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"currentFunction", ":=", 
+          RowBox[{"DSolve", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"eqCurrent", ",", 
+              RowBox[{
+               RowBox[{"function", "[", "currentArgValue", "]"}], "\[Equal]", 
+               
+               RowBox[{"Evaluate", "[", 
+                RowBox[{"previousFunction", "[", "currentArgValue", "]"}], 
+                "]"}]}]}], "}"}], ",", 
+            RowBox[{"function", "[", "argument", "]"}], ",", "argument"}], 
+           "]"}]}], ",", "\[IndentingNewLine]", "solveTimeAllowed", ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"currentFunction", ":=", "\[IndentingNewLine]", 
+          RowBox[{"NDSolve", "[", 
+           RowBox[{"eqCurrent", ",", "function", ",", "ar"}], "]"}]}]}], 
+        "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], ";"}]}],
+    "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdzFsoAwAARuFZrCktucbWhkYjeUSU2sxCqSGFbUIWyjIpIsqt1JDItoTx
+tMI0zWUSwjCXsjDDNmXFYooSJduwfw+n7+3E1zaXiIkEAoHuC1IXtfa1Jxf7
+1HTwAN9eJcR1n7esCjJ8+IyKgGbGSDSUuWqosNCm8svVullQyrxKgeJkchbM
+LRDlwdIOVyV0WxWNkES9ksL1wokBmC/IHoaRxtYJyPHSNPDl42QJJodzdf6P
+aHoDjoYEbsN75dAedLYLj6F+tf4Cqh0eC2QSGDdQokm9h5TlOgcMlfGdsJo0
+/AwVfOcX5B1NfcOFM5YXCn6kf7Bsjx2s93m5YvXbljgYDn8ne2NgbPEjHfbv
+qhnQw8rMgSr+WINfckcT5NEyWmA6faAL9sxxuqHiPaEPapVJclgUNDsDw0zm
+LajLPt+HO1WHBthJuTPCkDTDCSzfDLiG8vlpCxyPa7fBFIfQDv8BaMQhFg==
+
+  "]]
+},
+WindowSize->{1366, 744},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 3661, 79, 539, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
