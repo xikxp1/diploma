@@ -237,6 +237,8 @@ x(t) = e^{kt},
 \sum\limits_{i=0}^{n} \sum\limits_{j=0}^{l} a_{ij} k^i e^{k \tau j} = 0
 \end{equation}
 
+Заметим, что по знакам вещественных частей корней \ref{eq:characteristic-delay} можно судить об устойчивости соотвествующего ему дифференциального уравнения с запаздыванием, как и в случае уравнений безе запаздывания. С доказательством данного факта можно ознакомиться, например, в \cite{bib:Elsgoltz-Norkin}.
+
 Теория подобных трансцедентных уравнений изучалась ещё в $XVIII$ веке Ламбертом и Эйлером. Известно, что (\ref{eq:characteristic-delay}) имеет бесконечное множество корней в комплексном пространстве.
 
 В честь немецкого математика Ламберта была названа функция $W(z)$, определяемая функциональным уравнением
@@ -348,7 +350,7 @@ div \left( \dfrac{\partial^n \bar{J}}{\partial t^n} \right) \dfrac{\tau^n}{n!} =
 \sum\limits_{n=0}^{m} \dfrac{\partial^{n+1} u}{\partial t^{n+1}} \dfrac{\tau^n}{n!} - a^2 \dfrac{\partial^2 u}{\partial x^2} + \dfrac{V^2}{4a^2} u = 0
 \end{equation}
 
-Для уравнения \ref{eq:final-n} применим \textbf{метод Фурье разделения переменных}:
+Для уравнения (\ref{eq:final-n}) применим \textbf{метод Фурье разделения переменных}:
 
 \begin{equation}
 u(x,t) = \sum\limits_{k=1}^{\infty} X(x)T(t)
@@ -377,8 +379,109 @@ X'' + k^2 X & = 0
 
 Дальнейшей целью настоящего исследования станет вопрос об устойчивости нулевого решения
 
-\begin{equation}
+\begin{equation}\label{eq:ODE}
 \sum\limits_{n=0}^{m} \dfrac{\tau^n}{n!} T^{(n+1)} + \underbrace{ \left( \dfrac{V^2}{4a^2} + a^2 k^2 \right)}_{\gamma(k^2)} T = 0
 \end{equation}
 
 при различных $m$.
+
+\subsection{Исследование устойчивости обыкновенного\\дифференциального уравнения относительно $T(t)$}
+
+Напомним, что в данном пункте исследуется уравнение (\ref{eq:ODE})
+
+\begin{equation*}
+\sum\limits_{n=0}^{m} \dfrac{\tau^n}{n!} T^{(n+1)} + \underbrace{ \left( \dfrac{V^2}{4a^2} + a^2 k^2 \right)}_{\gamma(k^2)} T = 0
+\end{equation*}
+
+Выпишем характеристическое уравнение:
+
+\begin{equation*}
+\sum\limits_{n=0}^{m} \dfrac{\tau^n}{n!} \lambda^{n+1} + {\gamma(k^2)} = 0
+\end{equation*}
+
+Согласно общей теории, для алгебраического уравнения
+
+\begin{equation}\label{eq:alg}
+a_0 x^n + a_1 x^{n-1} + \dots + a_{n-1} x + a_n = 0, \quad a \neq 0
+\end{equation}
+
+выполнена
+
+\so{\textbf{Теорема Рауса-Гурвица}}. Число корней с положительной частью действительного алгебраического уравнения (\ref{eq:alg}) равно числу перемен знака в любой из последовательностей
+
+\begin{equation}
+\Delta_0, \Delta_1, \dfrac{\Delta_2}{\Delta_1}, \dots, \dfrac{\Delta_n}{\Delta_{n-1}}
+\end{equation}
+
+или
+
+\begin{equation}
+\Delta_0, \Delta_1, \Delta_1 \Delta_2, \Delta_2 \Delta_3, \dots, \Delta_{n-2} \Delta_{n-1}, a_n,
+\end{equation}
+
+где
+
+\begin{align*}
+& \Delta_0 = a_0 > 0, \quad \Delta_1 = a_1, \quad \Delta_2 = 
+\begin{pmatrix}
+a_1 & a_0\\
+a_3 & a_2
+\end{pmatrix},\\
+& \Delta_3 = 
+\begin{pmatrix}
+a_1 & a_0 & 0\\
+a_3 & a_2 &a_1\\
+a_5 & a_4 &a_3
+\end{pmatrix}, \quad \Delta_4 =
+\begin{pmatrix}
+a_1 & a_0 & 0 & 0\\
+a_3 & a_2 & a_1 & a_0\\
+a_5 & a_4 & a_3 & a_2\\
+a_7 & a_6 & a_5 & a_4
+\end{pmatrix}, \dots
+\end{align*}
+
+\so{\textbf{Критерий Рауса-Гурвица}}. Для того, чтобы все корни действительного уравнения (\ref{eq:alg}) имели отрицательные действительные части необходимо и достачно, чтобы выполнялись неравенства:
+
+\begin{equation*}
+\Delta_0 > 0, \Delta_1 >0, \dots, \Delta_n > 0
+\end{equation*}
+
+Отметим, что согласно построению, можем считать $\gamma(k^2) \sim k^2$ неограниченным, а $\tau > 0$ фиксированным.
+
+Таким образом, задача об устойчивости решений дифференциального уравнения относительно $T(t)$ сводится к нахождению определителей матриц Гурвица для различных $m$.
+
+\subsection{Программное вычисление определителей\\матрицы Гурвица}
+
+В настоящей работе была реализована программа для символьного вычисления определителей матрицы Гурвица для уравнения (\ref{eq:ODE}):
+
+\begin{equation*}
+\sum\limits_{n=0}^{m} \dfrac{\tau^n}{n!} T^{(n+1)} + \underbrace{ \left( \dfrac{V^2}{4a^2} + a^2 k^2 \right)}_{\gamma(k^2)} T = 0
+\end{equation*}
+
+Ниже представлены результаты работы программы для различных порядков приближения $m=1,\dots,7$:
+
+\textbf{при $m=1$}: $\Delta_1 = 1 > 0$, $\Delta_1 = \gamma > 0$\\
+
+\textbf{при $m=2$}: $\Delta_1 = \tau$, $\Delta_2 = \tau (1 - 0.5 \gamma \tau) < 0$, $\Delta_3 = \gamma \tau (1 - 0.5 \gamma \tau) < 0$\\
+
+\textbf{при $m=3$}: $\Delta_1 = 0.5 \tau ^2$, $\Delta_2 = 0.3334 \tau ^3$, $\Delta_3 = \tau ^3 (0.3334\, -0.25 \gamma  \tau ) < 0$, $\Delta_4 = \gamma  \tau ^3 (0.3334\, -0.25 \gamma  \tau ) < 0$\\
+
+\textbf{при $m=4$}: $\Delta_1 = 0.167 \tau ^3$, $\Delta_2 = 0.041 \tau ^5$, $\Delta_3 = \tau ^6 (0.007 \gamma  \tau + 0.014)$, \\$\Delta_4 = \tau ^6 \left(-0.0017 \gamma ^2 \tau ^2-0.007 \gamma  \tau +0.014\right) < 0$,\\$\Delta_5 = \gamma  \tau ^6 \left(-0.0017 \gamma ^2 \tau ^2-0.0071 \gamma  \tau +0.0139 \right)$\\
+
+\textbf{при $m=5$}: $\Delta_1 = 0.042 \tau ^4$, $\Delta_2 = 0.003 \tau ^7$, $\Delta_3 = 0$, $\Delta_4 = \tau ^{10} (0.0001 \gamma  \tau -0.0002)$, $\Delta_5 = \tau ^{10} \left(-0.0001 \gamma ^2 \tau ^2+0.0002 \gamma  \tau -0.0002\right) < 0$, \dots\\
+
+\textbf{при $m=6$}: $\Delta_1 = 0.0083 \tau ^5$, $\Delta_2 = 0.0001 \tau ^9$, $\Delta_3 = -3.858^{-6} \tau ^{12} < 0$, \dots\\
+
+\textbf{при $m=7$}: $\Delta_1 = 0.0014 \tau ^6$, $\Delta_2 = 3.307^{-6} \tau ^{11}$, $\Delta_3 = -4.593^{-8} \tau ^{15} < 0$, \dots\\
+
+Построим график $\Delta_3$ для всех $m$, в которых в выражение для него не входит $\gamma(k^2)$:
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.65\textwidth]{./1_modelling/coefCheck.eps}
+\end{center}
+\caption{График для $\Delta_3$ при $5 \leq m \leq 7$}
+\end{figure}
+
+Таким образом, можно сделать вывод, что для любого $m$, начиная с $6$, хотя бы один из определителей матрицы Гурвица для (\ref{eq:ODE}) отрицателен. Так как, $T_0 = a_0 = \dfrac{\tau^{m-1}}{(m-1)!} >0$ для $\tau>0$. В аналитической части работы данный факт будет аналитически доказан, а также будет доказана теорема о неустойчивости всех приближений (\ref{eq:ODE}) кроме первого.
