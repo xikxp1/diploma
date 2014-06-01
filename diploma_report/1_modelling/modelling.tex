@@ -253,3 +253,97 @@ z = W(z) e^{W(z)}
 \end{center}
 \caption{График главной ветви $W_0(x)$ решений функции Ламберта}
 \end{figure}
+
+\subsection{Переход к исследованию обыкновенных\\уравнений в частных производных,\\приближающих исходное уравнение\\с запаздыванием}
+
+Цель дальнейшего исследования \--- свести исходную задачи к анализу её приближений уравнениями в частных производных.
+
+Напомним, что в работе исследуется задача (\ref{eq:main}, \ref{eq:diffusion-convection}):
+
+\begin{equation}
+\left\{
+\begin{aligned}
+\rho_t(\bar{x},t) + div \bar{J}(\bar{x},t) = f(\bar{x},t),\\
+\bar{J}(\bar{x},t+\tau) = -a^2 \nabla \rho(\bar{x},t) + \bar{V}(\bar{x},t) \rho(\bar{x},t)
+\end{aligned}
+\right.
+\end{equation}
+
+Разложим левую часть уравнения с запаздыванием в ряд Тэйлора, опустив члены порядка выше $m$:
+
+\begin{equation}
+\bar{J}(\bar{x},t) + \bar{J_t}(\bar{x},t) \tau + \dots + \dfrac{\partial^m \bar{J}}{\partial t^m}(\bar{x},t) \dfrac{\tau^m}{m!} = -a^2 \nabla \rho(\bar{x},t) + \bar{V}(\bar{x},t) \rho(\bar{x},t)
+\end{equation}
+
+\begin{equation}\label{eq:sub}
+\sum\limits_{n=0}^{m} \dfrac{\partial^n \bar{J}}{\partial t^n}(\bar{x},t) \dfrac{\tau^n}{n!} = -a^2 \nabla \rho(\bar{x},t) + \bar{V}(\bar{x},t) \rho(\bar{x},t)
+\end{equation}
+
+В контексте работы будем называть $m$ \textbf{порядком приближения}.
+
+Продифференциировав (\ref{eq:main}) $n$ раз, получим:
+
+\begin{equation}
+\dfrac{\partial^{n+1} \rho}{\partial t^{n+1}} + div \dfrac{\partial^n \bar{J}}{\partial t^n} = \dfrac{\partial^n f}{\partial t^n}
+\end{equation}
+
+Домножив последнее уравнение на $\frac{\tau^n}{n!}$, перепишем его в следующем виде:
+
+\begin{equation}\label{eq:div}
+div \left( \dfrac{\partial^n \bar{J}}{\partial t^n} \right) \dfrac{\tau^n}{n!} = \left(\dfrac{\partial^n f}{\partial t^n} - \dfrac{\partial^{n+1} \rho}{\partial t^{n+1}} \right) \dfrac{\tau^n}{n!}
+\end{equation}
+
+Из уравнения (\ref{eq:sub}):
+
+\begin{equation}
+\sum\limits_{n=0}^{m} div \left(\dfrac{\partial^n \bar{J}}{\partial t^n} \right) \dfrac{\tau^n}{n!} = -a^2 div(\nabla \rho) + div(\bar{V} \rho)
+\end{equation}
+
+Подставим (\ref{eq:div}):
+
+\begin{equation}
+\sum\limits_{n=0}^{m} \left(\dfrac{\partial^n f}{\partial t^n} - \dfrac{\partial^{n+1} \rho}{\partial t^{n+1}} \right) \dfrac{\tau^n}{n!} = - a^2 \Delta \rho + \rho div\bar{V} + (\bar{V},\nabla \rho)
+\end{equation}
+
+\begin{equation}
+\sum\limits_{n=0}^{m} \dfrac{\partial^{n+1} \rho}{\partial t^{n+1}} \dfrac{\tau^n}{n!} - a^2 \Delta \rho + \rho div\bar{V} + (\bar{V},\nabla \rho) = \sum\limits_{n=0}^{m} \dfrac{\partial^n f}{\partial t^n} \dfrac{\tau^n}{n!}
+\end{equation}
+
+Рассмотрим одномерный случай:
+
+\begin{equation}
+\sum\limits_{n=0}^{m} \dfrac{\partial^{n+1} \rho}{\partial t^{n+1}} \dfrac{\tau^n}{n!} - a^2 \dfrac{\partial^2 \rho}{\partial x^2} + \rho \dfrac{\partial V}{\partial x} + V \dfrac{\partial \rho}{\partial x} = \sum\limits_{n=0}^{m} \dfrac{\partial^n f}{\partial t^n} \dfrac{\tau^n}{n!} = g(x,t)
+\end{equation}
+
+Для простоты примем $g=0$ и $V=const$:
+
+\begin{equation}
+\sum\limits_{n=0}^{m} \dfrac{\partial^{n+1} \rho}{\partial t^{n+1}} \dfrac{\tau^n}{n!} - a^2 \dfrac{\partial^2 \rho}{\partial x^2} + V \dfrac{\partial \rho}{\partial x} = 0
+\end{equation}
+
+Заменим неизвестную функцию следующим образом:
+
+\begin{equation}
+\rho (x,t) = e^{\xi x} u(x,t)
+\end{equation}
+
+Тогда
+
+\begin{align}
+\rho_x & = e^{\xi x} (u_x + \xi u)\\
+\rho_{xx} & = e^{\xi x} (u_{xx} + 2 \xi u_x + \xi^2 u)
+\end{align}
+
+\begin{align}
+- a^2 \rho_{xx} + V \rho_x = e^{\xi x} \lbrack -a^2 (u_{xx} + 2 \xi u_x + \xi^2 u) + V (u_x + \xi u) \rbrack = \\
+= e^{\xi x} \lbrack -a^2 u_{xx} + (-2 a^2 \xi + V) u_x + (-a^2 \xi^2 + V \xi) u \rbrack = \\
+= e^{\xi x} \left\lbrack -a^2 u_{xx} + \dfrac{V^2}{4a^2} u \right\rbrack
+\end{align}
+
+при $\xi = \frac{V}{2a^2}$ (т.е. коэффициент при $u_x$ равен $0$).
+
+Наконец, получим уравнение, для которого будем исследовать устойчивость его решений:
+
+\begin{equation}\label{eq:final-n}
+\sum\limits_{n=0}^{m} \dfrac{\partial^{n+1} u}{\partial t^{n+1}} \dfrac{\tau^n}{n!} - a^2 \dfrac{\partial^2 u}{\partial x^2} + \dfrac{V^2}{4a^2} u = 0
+\end{equation}
