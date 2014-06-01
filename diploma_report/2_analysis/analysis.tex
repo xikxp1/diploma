@@ -1,1 +1,110 @@
 \section{Аналитическое исследование\\поставленной задачи}
+
+\subsection{Теорема о неустойчисвости приближений\\старших порядков}
+
+Напомним, что в настоящей работе исследуется задача
+
+\begin{equation}
+\left\{
+\begin{aligned}
+\rho_t(\bar{x},t) + div \bar{J}(\bar{x},t) = f(\bar{x},t),\\
+\bar{J}(\bar{x},t+\tau) = -a^2 \nabla \rho(\bar{x},t) + \bar{V}(\bar{x},t) \rho(\bar{x},t)
+\end{aligned}
+\right.
+\end{equation}
+
+Для нее в условиях
+
+\begin{enumerate}\label{eq:init-modelled}
+\item одномерной задачи,
+\item $\rho (x,t) = e^{\frac{V}{2a^2} x} u(x,t)$,
+\item $\sum\limits_{n=0}^{m} \dfrac{\partial^n f}{\partial t^n} \dfrac{\tau^n}{n!} = g(x,t) \equiv 0 \Leftarrow f(x,t) \equiv 0$,
+\item $V=const$
+\end{enumerate}
+
+были построены приближения
+
+\begin{equation}\label{eq:transfer-modelled}
+\sum\limits_{n=0}^{m} \dfrac{\partial^{n+1} u}{\partial t^{n+1}} \dfrac{\tau^n}{n!} - a^2 \dfrac{\partial^2 u}{\partial x^2} + \dfrac{V^2}{4a^2} u = 0,
+\end{equation}
+
+решения которых устойчивы при устойчивости решений обыкновенного дифференциального уравнения
+
+\begin{equation}\label{eq:ODE-modelled}
+\sum\limits_{n=0}^{m} \dfrac{\tau^n}{n!} T^{(n+1)} + \underbrace{ \left( \dfrac{V^2}{4a^2} + a^2 k^2 \right)}_{\gamma(k^2)} T = 0
+\end{equation}
+
+и неустойчивы в противном случае.
+
+При анализе результатов моделирования было выдвинуто предположение о неустойчивости всех приближений, начиная с $m=6$.
+
+\so{\textbf{Теорема о неустойчивости приближений\\старших порядков}}. Приближения (\ref{eq:transfer-modelled}) задачи (\ref{eq:init-modelled}) всех порядков кроме $m=1$ неустойчивы.
+
+Для доказательства теоремы сначала докажем следующее утверждение:
+
+\so{\textbf{Утверждение}}. $\Delta_3 < 0$ при $m \geq 6$.
+
+Выпишем общий вид определителя матрицы Гурвица при $k=3$:
+
+\begin{equation*}
+\Delta_3 = 
+\begin{vmatrix}
+\frac{\tau^{m-1}}{(m-1)!} & \frac{\tau^{m}}{m!} & 0\\
+\frac{\tau^{m-3}}{(m-3)!} & \frac{\tau^{m-2}}{(m-2)!} & \frac{\tau^{m-1}}{(m-1)!}\\
+\frac{\tau^{m-5}}{(m-5)!} & \frac{\tau^{m-4}}{(m-4)!} & \frac{\tau^{m-3}}{(m-3)!}
+\end{vmatrix} =
+\dfrac{\tau^{m-1}}{(m-1)!}
+\begin{vmatrix}
+\frac{\tau^{m-2}}{(m-2)!} & \frac{\tau^{m-1}}{(m-1)!}\\
+\frac{\tau^{m-4}}{(m-4)!} & \frac{\tau^{m-3}}{(m-3)!}
+\end{vmatrix}
+- \dfrac{\tau^{m}}{m!}
+\begin{vmatrix}
+\frac{\tau^{m-3}}{(m-3)!} & \frac{\tau^{m-1}}{(m-1)!}\\
+\frac{\tau^{m-5}}{(m-5)!} & \frac{\tau^{m-3}}{(m-3)!}
+\end{vmatrix}
+\end{equation*}
+
+\begin{equation*}
+\Delta_3 =
+\dfrac{\tau^{m-1}}{(m-1)!} \dfrac{\tau^{m-2}}{(m-2)!} \dfrac{\tau^{m-4}}{(m-4)!}
+\begin{vmatrix}
+1 & \frac{\tau}{m-1}\\
+1 & \frac{\tau}{m-3}
+\end{vmatrix}
+- \dfrac{\tau^{m}}{m!} \dfrac{\tau^{m-3}}{(m-3)!} \dfrac{\tau^{m-5}}{(m-5)!}
+\begin{vmatrix}
+1 & \frac{\tau^2}{(m-2)(m-1)}\\
+1 & \frac{\tau^2}{(m-4)(m-3)}
+\end{vmatrix}
+\end{equation*}
+
+\begin{multline*}
+\Delta_3 = \dfrac{\tau^{3m-7}}{(m-1)!(m-2)!(m-4)!} \left( \dfrac{\tau}{m-3} - \dfrac{\tau}{m-1} \right) \\ - \dfrac{\tau^{3m-8}}{m!(m-3)!(m-5)!} \left( \dfrac{\tau^2}{(m-4)(m-3)} - \dfrac{\tau^2}{(m-2)(m-1)} \right)
+\end{multline*}
+
+\begin{multline*}
+\Delta_3 = \tau^{3m-6} \left( \dfrac{(m-1) - (m-3)}{(m-1)!(m-2)!(m-4)!(m-3)(m-1))} \right. \\ \left. - \dfrac{(m-2)(m-1) - (m-4)(m-3)}{m!(m-3)!(m-5)!(m-4)(m-3)(m-2)(m-1)} \right)
+\end{multline*}
+
+\begin{align*}
+\Delta_3 = \dfrac{\tau^{3m-6}}{m!(m-1)!(m-3)!} (2m - (-3m + 2 + 7m - 12)) =\\= \dfrac{\tau^{3m-6}}{m!(m-1)!(m-3)!} (10-2m) < 0
+\end{align*}
+
+при $m \geq 6$.
+
+Таким образом, осталось доказать неустойчивость нулевого решения \ref{eq:ODE-modelled} при $1 \leq m \leq 5$ в предположениях достаточно больших значений $\gamma(k^2)$ и ограниченности $\tau$.
+
+\textbf{при $m=1$}: $\Delta_1 = 1 > 0$, $\Delta_1 = \gamma > 0$\\
+
+\textbf{при $m=2$}: $\Delta_1 = \tau > 0$, $\Delta_2 = \tau (1 - \frac{1}{2} \gamma \tau) < 0$, $\Delta_3 = \gamma \tau (1 - \frac{1}{2} \gamma \tau) < 0$\\
+
+\textbf{при $m=3$}: $\Delta_1 = \frac{1}{2} \tau ^2 > 0$, $\Delta_2 = \frac{1}{3} \tau ^3 > 0$, $\Delta_3 = \tau ^3 (\frac{1}{3} - \frac{1}{4} \gamma  \tau ) < 0$, $\Delta_4 = \gamma  \tau ^3 (\frac{1}{3} - \frac{1}{4} \gamma  \tau ) < 0$\\
+
+\textbf{при $m=4$}: $\Delta_1 = \frac{1}{6} \tau ^3 > 0$, $\Delta_2 = \frac{1}{24} \tau ^5 > 0$, $\Delta_3 = \frac{1}{144} \tau^6 (2+\gamma \tau) > 0$, $\Delta_4 = \frac{1}{576} \tau^6 (8 - 4 \gamma \tau - \gamma^2 \tau^2 ) < 0$, $\Delta_5 = \frac{1}{576} \gamma \tau^6 (8 - 4 \gamma \tau - \gamma^2 \tau^2 < 0)$\\
+
+\textbf{при $m=5$}: $\Delta_1 = \frac{1}{24} \tau^4 > 0$, $\Delta_2 = \frac{1}{360} \tau^7 > 0$, $\Delta_3 = 0$,\\$\Delta_4 = \frac{1}{14400} \tau^{10} (\frac{8}{3} + \frac{5}{3} \gamma \tau) > 0$, $\Delta_5 = \frac{1}{14400} \tau^{10} (-\frac{8}{3} + \frac{10}{3} \gamma \tau - \frac{25}{24} \gamma^2 \tau^2) < 0$, $\Delta_6 = \frac{1}{14400} \gamma \tau^{10} (-\frac{8}{3} + \frac{10}{3} \gamma \tau - \frac{25}{24} \gamma^2 \tau^2) < 0$\\
+
+Теорема доказана.\\
+
+Таким образом, для всех приближений кроме первого нарушается условие непрерывной зависимости решений он начальных данных в силу их неустойчивости, т.е сами приближения \--- некорректно поставленные по Адамару задачи.
