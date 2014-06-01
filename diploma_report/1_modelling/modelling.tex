@@ -347,3 +347,38 @@ div \left( \dfrac{\partial^n \bar{J}}{\partial t^n} \right) \dfrac{\tau^n}{n!} =
 \begin{equation}\label{eq:final-n}
 \sum\limits_{n=0}^{m} \dfrac{\partial^{n+1} u}{\partial t^{n+1}} \dfrac{\tau^n}{n!} - a^2 \dfrac{\partial^2 u}{\partial x^2} + \dfrac{V^2}{4a^2} u = 0
 \end{equation}
+
+Для уравнения \ref{eq:final-n} применим \textbf{метод Фурье разделения переменных}:
+
+\begin{equation}
+u(x,t) = \sum\limits_{k=1}^{\infty} X(x)T(t)
+\end{equation}
+
+Получим:
+
+\begin{equation}
+\sum\limits_{n=0}^{m} \dfrac{\tau^n}{n!} T^{(n+1)} X + \dfrac{V^2}{4a^2} T X =a^2 T X'', \quad k=1,\dots,\infty
+\end{equation}
+
+\begin{equation}
+\dfrac{\sum\limits_{n=0}^{m} \dfrac{\tau^n}{n!} T^{(n+1)} + \dfrac{V^2}{4a^2} T}{a^2 T} = \dfrac{X''}{X} = -\lambda = -k^2
+\end{equation}
+
+\begin{equation}
+\left\{
+\begin{aligned}
+\sum\limits_{n=0}^{m} \dfrac{\tau^n}{n!} T^{(n+1)} + \underbrace{ \left( \dfrac{V^2}{4a^2} + a^2 k^2 \right)}_{\gamma(k^2)} T & = 0\\
+X'' + k^2 X & = 0
+\end{aligned}
+\right.
+\end{equation}
+
+Как видно, малый параметр входит только в уравнение относительно $T(t)$.
+
+Дальнейшей целью настоящего исследования станет вопрос об устойчивости нулевого решения
+
+\begin{equation}
+\sum\limits_{n=0}^{m} \dfrac{\tau^n}{n!} T^{(n+1)} + \underbrace{ \left( \dfrac{V^2}{4a^2} + a^2 k^2 \right)}_{\gamma(k^2)} T = 0
+\end{equation}
+
+при различных $m$.
