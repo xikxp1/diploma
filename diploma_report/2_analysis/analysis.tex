@@ -181,9 +181,9 @@ T(t+\tau) = T(t) + \tau T'(t) + \dots + \dfrac{\tau^n}{n!} T^{(n)} (t) + \dots,
 \lambda_k + \gamma(k^2) e^{-\lambda_k \tau} = 0
 \end{equation}
 
-Устойчивость (\ref{eq:transfer-modelled}) зависит от знаков вещественных частей $Re(\lamba_k)$.
+Устойчивость (\ref{eq:transfer-modelled}) зависит от знаков вещественных частей $Re(\lambda_k)$.
 
-\subsection{Достаточное условие отрицательности знаков вещественных частей корней характерестического уравнения}
+\subsection{Достаточное условие неположительности знаков\\вещественных частей корней характерестического\\уравнения}
 
 Напомним, что задача свелась к поиску параметров таких, что все вещественные части корней характерического уравнения
 
@@ -207,8 +207,65 @@ T(t+\tau) = T(t) + \tau T'(t) + \dots + \dfrac{\tau^n}{n!} T^{(n)} (t) + \dots,
 
 положительными вещественными частями при $\gamma \tau < 1$.
 
-Для доказательства этого факта представим $\phi (z)$ в следующем виде
+Для доказательства этого факта представим $\phi (z)$ в следующем виде:
 
 \begin{equation}
-\phi(z) = z + \gamma + z \gamma \tau \left(\dfrac{e^{-z \tau} - 1}{z \tau}) = 0
+\phi(z) = \underbrace{{z + \gamma}}_{H_1(z)} + \underbrace{z \gamma \tau \left(\dfrac{e^{-z \tau} - 1}{z \tau} \right)}_{H_2(z)} = 0
 \end{equation}
+
+Рассмотрим функции $H_1(z)$ и $H_2(z)$ в области $D = {z|Re(z) \geq 0}$. Её границей будет ось чисто мнимых чисел $\delta D = {z|Re(z)=0}$.
+
+Отметим, что $H_1(z)>0$ в открытой области $D-\delta D$ при любом $z$.
+
+Представим $z=x+iy$ и рассмотрим $H_1(z)$ и $H_2(z)$ в области $\delta D$ (т.е. $z=iy$):
+
+\begin{equation}\label{eq:h1}
+|H_1(iy)| = \sqrt{\gamma^2 + y^2} > |y| = |z|
+\end{equation}
+
+Представим $H_2(z)$:
+
+\begin{equation}
+H_2(z) = z \gamma \tau \underbrace{\left(\dfrac{e^{-z \tau} - 1}{z \tau} \right)}_{h(z)}
+\end{equation}
+
+\begin{equation}
+h(iy) = \dfrac{cos(y \tau) - i sin(y \tau) - 1}{iy \tau} = -\dfrac{sin(y \tau)}{y \tau} - i \dfrac{cos(y \tau)-1}{y \tau}
+\end{equation}
+
+Обозначим $\alpha = y \tau$
+
+\begin{equation}
+{|h(iy)|}^2 = \dfrac{sin^2(\alpha)}{\alpha^2} + \dfrac{(cos(\alpha)-1)^2}{\alpha^2} = \dfrac{2-2cos(\alpha)}{\alpha^2} \leq 1
+\end{equation}
+
+Для наглядности приведем график ${|h(iy)|}^2$:
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.65\textwidth]{./2_analysis/proof.eps}
+\end{center}
+\caption{График для ${|h(iy)|}^2$ при $-10 \leq y \leq 10$}
+\end{figure}
+
+Таким образом,
+
+\begin{equation}\label{eq:h2}
+|H_2(iy)| \leq |y| \gamma \tau = |z| \gamma \tau
+\end{equation}
+
+Объединяя (\ref{eq:h1}) и (\ref{eq:h2}) и потребовав $\gamma \tau < 1$, получим
+
+\begin{equation}
+|H_2(z)| < |z| < |H_1(z)|
+\end{equation}
+
+на границе области $D$. Таким образом, выполнены все условия теоремы Руше и у $\phi(z)$ нет нулей в $D$.
+
+Таким образом, $\gamma \tau < 1$ \--- достаточное условие устойчивости решений дифференциального уравнения с запаздыванием.
+
+\begin{equation}
+{T'}_{k}(t) + \gamma(k^2) T_k (t-\tau)=0
+\end{equation}
+
+Отметим, что сколь угодно бы малым не было $\tau>0$ всегда можно найти такой номер $k$, начиная с которого не выполняется достаточное условие сходимости $\gamma \tau < 1$.
