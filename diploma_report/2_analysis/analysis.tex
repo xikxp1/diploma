@@ -129,10 +129,18 @@
 u_t (x,t) - a^2 u_{xx} (x,t-\tau) + \dfrac{V^2}{4a^2} u (x,t-\tau) = 0
 \end{equation}
 
-Для \ref{eq:diffusion-reaction-delay} применим метод Фурье разделения переменных
+Уравнение (\ref{eq:diffusion-reaction-delay}) \--- \textbf{уравнение реакции-диффузии с запаздыванием по времени}.
+
+Отметим, что в недавней работе \cite{bib:Polyanin-Zhurov} было построено аналитическое решение похожей задачи
 
 \begin{equation}
-u(x,t) = \sum\limits_{k=1}^{\infty} X(x) T(t)
+u_t (x,t) - a^2 u_{xx} (x,t) + \dfrac{V^2}{4a^2} u (x,t-\tau) = 0
+\end{equation}
+
+Для (\ref{eq:diffusion-reaction-delay}) применим метод Фурье разделения переменных:
+
+\begin{equation}
+u(x,t) = \sum\limits_{k=1}^{\infty} X_k(x) T_k(t)
 \end{equation}
 
 Отметим, что, вообще говоря, метод Фурье непременим к любому дифференциальному уравнению с запаздыванием (даже линейному), но в данном случае с его помощью можно получить такие результаты:
