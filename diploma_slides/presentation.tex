@@ -351,6 +351,58 @@
 
     \end{frame}
 
+    \section{Экономика}
+
+     \begin{frame}
+        \frametitle{Приложение математического моделирования для исследования экономических процессов}
+        \framesubtitle{Модель капиталовложений Калецкого}
+
+        \begin{equation}
+            K'(t) - \dfrac{a}{\tau} K(t) + \left( \dfrac{a}{\tau} + b \right) K(t-\tau) = a (A(t-\tau) + C_a(t-\tau) + \epsilon(t-\tau))
+        \end{equation}
+
+        Асимптотическая устойчивость решений:
+
+        \begin{equation}
+            arccos \left( \frac{a}{a + b \tau} \right) > \sqrt{b \tau (b \tau + 2a)}
+        \end{equation}
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Приложение математического моделирования для исследования экономических процессов}
+        \framesubtitle{Примеры применения модели Калецкого}
+
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width=0.45\textwidth]{unstable.eps}
+            \end{center}
+            \caption{График решения уравнения Калецкого при $a=0.95$, $b=0.12$, $\tau=1$}
+        \end{figure}
+
+        \begin{equation}\label{eq:Kalecki-stab}
+            arccos \left( \frac{0.95}{0.95 + 0.12} \right) \approx 0.478144 \leq 0.492341 \approx \sqrt{0.12 (0.12 + 2 \dot 0.95)}
+        \end{equation}
+
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Приложение математического моделирования для исследования экономических процессов}
+        \framesubtitle{Примеры применения модели Калецкого}
+
+        \begin{figure}[h]
+            \begin{center}
+                \includegraphics[width=0.45\textwidth]{stable.eps}
+        \end{center}
+        \caption{График решения уравнения Калецкого при $a=0.7$, $b=0.12$, $\tau=1$}
+    \end{figure}
+
+    \begin{equation}
+        arccos \left( \frac{0.7}{0.7 + 0.12} \right) \approx 0.547827 > 0.427083 \approx \sqrt{0.12 (0.12 + 2 \dot 0.7)}
+    \end{equation}
+
+    \end{frame}
+
     \section{Выводы}
 
     \begin{enumerate}
@@ -394,20 +446,5 @@
 
     \end{frame}
     \end{enumerate}
-
-    \setbeamertemplate{headline}
-    {
-
-    }
-
-
-    \begin{frame}
-        \begin{block}{
-            \begin{center}
-                \Huge \textbf{СПАСИБО ЗА ВНИМАНИЕ}
-            \end{center}
-        }
-        \end{block}
-    \end{frame}
 
 \end{document}
