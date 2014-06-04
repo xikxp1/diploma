@@ -1,0 +1,46 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8] {inputenc}
+\usepackage[english, russian] {babel}
+\usepackage{indentfirst}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\usepackage{geometry}
+\geometry{left=2cm}
+\geometry{right=1.5cm}
+\geometry{top=1cm}
+\geometry{bottom=2cm}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[R]{}
+\fancyhead[L]{\textit{Особенности математических моделей теплопроводности с отклоняющимся аргументом}}
+\setlength{\headheight}{36pt}
+\fancyfoot{}
+
+\begin{document}
+
+\textbf{Тема дипломного проекта}: Особенности математических моделей теплопроводности с отклоняющимся аргументом\\
+
+\textbf{Автор}: Качалкин Иван, УПМ-411\\
+
+\textbf{Руководитель}: проф., д.ф.-м.н. Филимонов А.М.\\
+
+Данный дипломный проект посвящен изучению математических моделей теплопроводности с отклоняющимся аргументом.
+
+В нем исследовано уравнение локального закона сохранения (Лиувилля) с запаздыванием $\tau$:
+
+\begin{equation}
+\left\{
+\begin{aligned}
+\rho_t(x,t) + div \bar{J}(x,t) = f(x,t),\\
+\bar{J}(x,t+\tau) = -a^2 \nabla \rho(x,t) + \bar{V}(x,t) \rho(x,t)
+\end{aligned}
+\right.
+\end{equation}
+
+Для него был рассмотрен вопрос устойчивости, а также построены приближения моделями без запаздывания и произведена оценка их адекватности, а также доказаны теоремы об устойчивости.
+
+\end{document}
