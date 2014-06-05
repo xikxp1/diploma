@@ -1,4 +1,4 @@
 diploma
 =======
 
-My diploma on heat equations with small parameters
+My diploma on delay heat equations
